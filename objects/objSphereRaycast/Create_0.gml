@@ -1,0 +1,1 @@
+sphere = new BonkSphere().SetRadius(50).SetPosition(x + 140, y, 0);
