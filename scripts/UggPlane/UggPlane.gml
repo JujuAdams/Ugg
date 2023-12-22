@@ -49,8 +49,8 @@ function UggPlane(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = UGG_DEFAULT
     
     shader_set(__shdUgg);
     shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
-                                                                 color_get_green(_color)/255,
-                                                                 color_get_blue( _color)/255);
+                                                               color_get_green(_color)/255,
+                                                               color_get_blue( _color)/255);
     vertex_submit(_vertexBuffer, pr_trianglelist, -1);
     shader_reset();
     

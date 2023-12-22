@@ -5,6 +5,6 @@
   "type": 1,
   "parent": {
     "name": "(System)",
-    "path": "folders/Bonk/Ugg/(System).yy",
+    "path": "folders/Ugg/(System).yy",
   },
 }

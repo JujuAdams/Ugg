@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Matrices",
-    "path": "folders/Bonk/Matrices.yy",
+    "path": "folders/Matrices.yy",
   },
 }

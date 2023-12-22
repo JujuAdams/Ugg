@@ -32,8 +32,8 @@ function UggRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR
     
     shader_set(__shdUgg);
     shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
-                                                                 color_get_green(_color)/255,
-                                                                 color_get_blue( _color)/255);
+                                                               color_get_green(_color)/255,
+                                                               color_get_blue( _color)/255);
     vertex_submit(_global.__uggRay, pr_trianglelist, -1);
     shader_reset();
     
