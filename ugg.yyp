@@ -7,7 +7,6 @@
     {"id":{"name":"QuatRotateLocalZ","path":"scripts/QuatRotateLocalZ/QuatRotateLocalZ.yy",},"order":3,},
     {"id":{"name":"BonkVecNormalize","path":"scripts/BonkVecNormalize/BonkVecNormalize.yy",},"order":5,},
     {"id":{"name":"UggSphere","path":"scripts/UggSphere/UggSphere.yy",},"order":2,},
-    {"id":{"name":"UggQuad","path":"scripts/UggQuad/UggQuad.yy",},"order":8,},
     {"id":{"name":"objCylinder","path":"objects/objCylinder/objCylinder.yy",},"order":9,},
     {"id":{"name":"QuatRotateVector","path":"scripts/QuatRotateVector/QuatRotateVector.yy",},"order":22,},
     {"id":{"name":"BonkMatrixInverse","path":"scripts/BonkMatrixInverse/BonkMatrixInverse.yy",},"order":0,},
