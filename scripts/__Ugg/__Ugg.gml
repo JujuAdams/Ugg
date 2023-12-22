@@ -1,7 +1,6 @@
-#macro  __UGG_VERSION  "1.0.0"
+#macro  __UGG_VERSION  "0.1.0"
 #macro  __UGG_DATE     "2023-12-22"
 
-#macro __UGG_VERY_LARGE  1000000
 #macro __UGG_GLOBAL  static _global = __Ugg();
 
 
