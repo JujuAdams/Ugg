@@ -1,6 +1,6 @@
-if (keyboard_check(ord("U"))) quaternion = UggQuatRotateLocalX(quaternion,  0.5);
-if (keyboard_check(ord("J"))) quaternion = UggQuatRotateLocalX(quaternion, -0.5);
-if (keyboard_check(ord("I"))) quaternion = UggQuatRotateLocalY(quaternion,  0.5);
-if (keyboard_check(ord("K"))) quaternion = UggQuatRotateLocalY(quaternion, -0.5);
-if (keyboard_check(ord("O"))) quaternion = UggQuatRotateLocalZ(quaternion,  0.5);
-if (keyboard_check(ord("L"))) quaternion = UggQuatRotateLocalZ(quaternion, -0.5);
+if (keyboard_check(ord("U"))) quaternion = QuatRotateLocalX(quaternion,  0.5);
+if (keyboard_check(ord("J"))) quaternion = QuatRotateLocalX(quaternion, -0.5);
+if (keyboard_check(ord("I"))) quaternion = QuatRotateLocalY(quaternion,  0.5);
+if (keyboard_check(ord("K"))) quaternion = QuatRotateLocalY(quaternion, -0.5);
+if (keyboard_check(ord("O"))) quaternion = QuatRotateLocalZ(quaternion,  0.5);
+if (keyboard_check(ord("L"))) quaternion = QuatRotateLocalZ(quaternion, -0.5);

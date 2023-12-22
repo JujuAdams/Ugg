@@ -1,1 +1,1 @@
-quaternion = UggQuatIdentity();
+quaternion = QuatIdentity();
