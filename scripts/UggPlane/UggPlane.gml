@@ -8,12 +8,13 @@
 
 function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {
-    __UGG_GLOBAL
+    static _vertexFormat = __Ugg().__vertexFormat;
+    __UGG_COLOR_UNIFORM
     
     //TODO - Optimise this and draw it relative to the camera's position
     
     var _vertexBuffer = vertex_create_buffer();
-    vertex_begin( _vertexBuffer, _global.__uggVertexFormat);
+    vertex_begin( _vertexBuffer, _vertexFormat);
     
     //Ensure normalisation
     var _factor = 1 / sqrt(_normalX*_normalX + _normalY*_normalY + _normalZ*_normalZ);
@@ -76,9 +77,9 @@ function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT
     vertex_end(_vertexBuffer);
     
     shader_set(__shdUgg);
-    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
-                                                               color_get_green(_color)/255,
-                                                               color_get_blue( _color)/255);
+    shader_set_uniform_f(_shdUgg_u_vColor, color_get_red(  _color)/255,
+                                           color_get_green(_color)/255,
+                                           color_get_blue( _color)/255);
     vertex_submit(_vertexBuffer, pr_trianglelist, -1);
     shader_reset();
     

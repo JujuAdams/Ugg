@@ -1,7 +1,7 @@
 #macro  __UGG_VERSION  "0.1.0"
 #macro  __UGG_DATE     "2023-12-22"
 
-#macro __UGG_GLOBAL  static _global = __Ugg();
+#macro __UGG_COLOR_UNIFORM  static _shdUgg_u_vColor = shader_get_uniform(__shdUgg, "u_vColor");
 
 
 
@@ -18,16 +18,12 @@ function __Ugg()
     vertex_format_begin();
     vertex_format_add_position_3d();
     vertex_format_add_normal();
-    _global.__uggVertexFormat = vertex_format_end();
+    _global.__vertexFormat = vertex_format_end();
     
-    _global.__uggUniform_shdUgg_u_vColor = shader_get_uniform(__shdUgg, "u_vColor");
-    
-    _global.__uggSphere   = __UggPrebuildSphere();
-    _global.__uggCylinder = __UggPrebuildCylinder();
-    _global.__uggAABB     = __UggPrebuildAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
-    _global.__uggRay      = __UggPrebuildAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
-    
-    _global.__uggIdentityMatrix = matrix_build_identity();
+    _global.__sphere   = __UggPrebuildSphere();
+    _global.__cylinder = __UggPrebuildCylinder();
+    _global.__aabb     = __UggPrebuildAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
+    _global.__ray      = __UggPrebuildAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
     
     
     
@@ -50,9 +46,9 @@ function __Ugg()
     var _directionZ = UGG_LIGHT_DIRECTION_Z*_inverseLength;
     
     shader_set_uniform_f(shader_get_uniform(__shdUgg, "u_vDirectLightDirection"), _directionX, _directionY, _directionZ);
-    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR)/255,
-                                                                 color_get_green(UGG_DEFAULT_DIFFUSE_COLOR)/255,
-                                                                 color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR)/255);
+    shader_set_uniform_f(shader_get_uniform(__shdUgg, "u_vColor"), color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR)/255,
+                                                                   color_get_green(UGG_DEFAULT_DIFFUSE_COLOR)/255,
+                                                                   color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR)/255);
     shader_reset();
     
     return _global;

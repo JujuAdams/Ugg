@@ -9,7 +9,8 @@
 
 function UggRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_RAY_THICKNESS)
 {
-    __UGG_GLOBAL
+    static _ray = __Ugg().__ray;
+    __UGG_COLOR_UNIFORM
     
     var _dx = _x2 - _x1;
     var _dy = _y2 - _y1;
@@ -31,10 +32,10 @@ function UggRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR
     matrix_set(matrix_world, _matrix);
     
     shader_set(__shdUgg);
-    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
-                                                               color_get_green(_color)/255,
-                                                               color_get_blue( _color)/255);
-    vertex_submit(_global.__uggRay, pr_trianglelist, -1);
+    shader_set_uniform_f(_shdUgg_u_vColor, color_get_red(  _color)/255,
+                                           color_get_green(_color)/255,
+                                           color_get_blue( _color)/255);
+    vertex_submit(_ray, pr_trianglelist, -1);
     shader_reset();
     
     matrix_set(matrix_world, _worldMatrix);

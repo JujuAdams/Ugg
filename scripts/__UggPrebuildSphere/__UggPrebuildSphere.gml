@@ -2,10 +2,8 @@
 
 function __UggPrebuildSphere()
 {
-    __UGG_GLOBAL
-    
     var _vertexBuffer = vertex_create_buffer();
-    vertex_begin(_vertexBuffer, _global.__uggVertexFormat);
+    vertex_begin(_vertexBuffer, __Ugg().__vertexFormat);
     
     var _rows = 0.5*UGG_SPHERE_STEPS + 0.5;
     
@@ -21,9 +19,6 @@ function __UggPrebuildSphere()
         _cc[_i] = dcos(_rad);
         _ss[_i] = dsin(_rad);
     }
-    
-    var _vbuff = vertex_create_buffer();
-    vertex_begin( _vbuff, _global.__uggVertexFormat);
     
     for(var _j = 0; _j < _rows; _j++)
     {
