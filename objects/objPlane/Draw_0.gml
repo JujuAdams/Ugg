@@ -1,1 +1,1 @@
-UggPlane(x, y, -20,   0, 0, 1,  c_lime);
+UggPlane(x, y, -20,   0, 0, 1,  c_dkgray);
