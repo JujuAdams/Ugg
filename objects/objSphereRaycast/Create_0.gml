@@ -1,1 +1,0 @@
-sphere = new UggSphere().SetRadius(50).SetPosition(x + 140, y, 0);

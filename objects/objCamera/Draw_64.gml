@@ -7,8 +7,8 @@ if (showInfo)
         _string += "camera yaw/pitch = " + string(camYaw) + ", " + string(camPitch) + "\n";
         _string += "\n";
         _string += "WASD/shift/space to move\n";
+        _string += "Left click to toggle mouselook\n";
         _string += "F1 to toggle this panel\n";
-        _string += "F3 to toggle mouselook\n";
         _string += "F4 to toggle fullscreen";
     
     draw_set_colour(c_black);

@@ -1,8 +1,8 @@
 //Toggle the info panel if we press F1
 if (keyboard_check_released(vk_f1)) showInfo = !showInfo;
 
-//Lock the mouse if we press F3
-if (keyboard_check_released(vk_f3))
+//Lock the mouse if we left click
+if (mouse_check_button_released(mb_left))
 {
     mouseLock = !mouseLock;
     mouseLockTimer = 0;
