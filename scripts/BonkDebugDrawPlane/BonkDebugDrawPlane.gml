@@ -6,9 +6,9 @@
 /// @param zNormal
 /// @param [color]
 
-function BonkDebugDrawPlane(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = BONK_DRAW_DEFAULT_DIFFUSE_COLOR)
+function BonkDebugDrawPlane(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     //TODO - Optimise this and draw it relative to the camera's position
     
@@ -29,8 +29,8 @@ function BonkDebugDrawPlane(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = B
     
     var _bitangent = BonkVecCross(_normal, _tangent);
     
-    _tangent   = BonkVecMultiply(_tangent,   BONK_DRAW_PLANE_SIZE);
-    _bitangent = BonkVecMultiply(_bitangent, BONK_DRAW_PLANE_SIZE);
+    _tangent   = BonkVecMultiply(_tangent,   UGG_PLANE_SIZE);
+    _bitangent = BonkVecMultiply(_bitangent, UGG_PLANE_SIZE);
     
     var _a = BonkVecAdd(     BonkVecAdd(     _position, _tangent), _bitangent);
     var _b = BonkVecAdd(     BonkVecSubtract(_position, _tangent), _bitangent);

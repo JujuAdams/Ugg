@@ -1,6 +1,6 @@
 function BonkMatrixResetWorld()
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     matrix_set(matrix_world, _global.__bonkIdentityMatrix);
 }

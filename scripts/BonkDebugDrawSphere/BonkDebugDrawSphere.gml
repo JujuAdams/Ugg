@@ -4,9 +4,9 @@
 /// @param radius
 /// @param [color]
 
-function BonkDebugDrawSphere(_x, _y, _z, _radius, _color = BONK_DRAW_DEFAULT_DIFFUSE_COLOR)
+function BonkDebugDrawSphere(_x, _y, _z, _radius, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     var _worldMatrix = matrix_get(matrix_world);
     var _matrix = matrix_build(_x, _y, _z,   0, 0, 0,   _radius, _radius, _radius);

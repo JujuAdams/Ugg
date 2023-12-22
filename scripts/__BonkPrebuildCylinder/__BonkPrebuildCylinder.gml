@@ -2,7 +2,7 @@
 
 function __BonkPrebuildCylinder()
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     var _x1 = -1;
     var _y1 = -1;
@@ -11,12 +11,12 @@ function __BonkPrebuildCylinder()
     var _y2 = 1;
     var _z2 = 0.5;
     
-	var _cc = array_create(BONK_DRAW_CYLINDER_STEPS, 0);
-	var _ss = array_create(BONK_DRAW_CYLINDER_STEPS, 0);
+	var _cc = array_create(UGG_CYLINDER_STEPS, 0);
+	var _ss = array_create(UGG_CYLINDER_STEPS, 0);
 
-	for(var _i = 0; _i <= BONK_DRAW_CYLINDER_STEPS; _i++)
+	for(var _i = 0; _i <= UGG_CYLINDER_STEPS; _i++)
 	{
-		var _deg = 360*_i / BONK_DRAW_CYLINDER_STEPS;
+		var _deg = 360*_i / UGG_CYLINDER_STEPS;
 		_cc[_i] = dcos(_deg);
 		_ss[_i] = dsin(_deg);
 	}
@@ -32,9 +32,9 @@ function __BonkPrebuildCylinder()
 	var _bx = _mx + _cc[0]*_rx;
 	var _by = _my + _ss[0]*_ry;
     
-	for(var _i = 1; _i <= BONK_DRAW_CYLINDER_STEPS; _i++)
+	for(var _i = 1; _i <= UGG_CYLINDER_STEPS; _i++)
 	{
-	    var _j = (_i+1) mod BONK_DRAW_CYLINDER_STEPS;
+	    var _j = (_i+1) mod UGG_CYLINDER_STEPS;
     
 	    var _ax = _bx;
 	    var _ay = _by;

@@ -6,9 +6,9 @@
 /// @param zNormal
 /// @param [color]
 
-function BonkDebugDrawQuad(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = BONK_DRAW_DEFAULT_DIFFUSE_COLOR)
+function BonkDebugDrawQuad(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     var _vertexBuffer = vertex_create_buffer();
     vertex_begin( _vertexBuffer, _global.__bonkVertexFormat);
@@ -27,8 +27,8 @@ function BonkDebugDrawQuad(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = BO
     
     var _bitangent = BonkVecCross(_normal, _tangent);
     
-    _tangent   = BonkVecMultiply(_tangent,   BONK_DRAW_PLANE_SIZE);
-    _bitangent = BonkVecMultiply(_bitangent, BONK_DRAW_PLANE_SIZE);
+    _tangent   = BonkVecMultiply(_tangent,   UGG_PLANE_SIZE);
+    _bitangent = BonkVecMultiply(_bitangent, UGG_PLANE_SIZE);
     
     var _a = BonkVecAdd(     BonkVecAdd(     _position, _tangent), _bitangent);
     var _b = BonkVecAdd(     BonkVecSubtract(_position, _tangent), _bitangent);

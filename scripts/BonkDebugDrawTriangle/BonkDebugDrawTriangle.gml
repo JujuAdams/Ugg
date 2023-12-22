@@ -3,9 +3,9 @@
 /// @param vertex2
 /// @param color
 
-function BonkDebugDrawTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = BONK_DRAW_DEFAULT_DIFFUSE_COLOR) 
+function BonkDebugDrawTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_DEFAULT_DIFFUSE_COLOR) 
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     var _oldCullmode = gpu_get_cullmode();
     gpu_set_cullmode(cull_noculling);

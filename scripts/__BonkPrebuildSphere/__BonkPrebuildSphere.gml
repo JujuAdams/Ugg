@@ -2,22 +2,22 @@
 
 function __BonkPrebuildSphere()
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     var _vertexBuffer = vertex_create_buffer();
     vertex_begin(_vertexBuffer, _global.__bonkVertexFormat);
     
-    var _rows = 0.5*BONK_DRAW_SPHERE_STEPS + 0.5;
+    var _rows = 0.5*UGG_SPHERE_STEPS + 0.5;
     
     // Create sin and cos tables
     var _cc;
     var _ss;
-    _cc[BONK_DRAW_SPHERE_STEPS] = 0;
-    _ss[BONK_DRAW_SPHERE_STEPS] = 0;
+    _cc[UGG_SPHERE_STEPS] = 0;
+    _ss[UGG_SPHERE_STEPS] = 0;
     
-    for( var _i = 0; _i <= BONK_DRAW_SPHERE_STEPS; _i++)
+    for( var _i = 0; _i <= UGG_SPHERE_STEPS; _i++)
     {
-        var _rad = _i*360/BONK_DRAW_SPHERE_STEPS;
+        var _rad = _i*360/UGG_SPHERE_STEPS;
         _cc[_i] = dcos(_rad);
         _ss[_i] = dsin(_rad);
     }
@@ -38,7 +38,7 @@ function __BonkPrebuildSphere()
         var _this_a = [_rd1*_cc[_i], _rd1*_ss[_i], _rh1,    _rd1*_cc[_i], _rd1*_ss[_i], _rh1];
         var _this_b = [_rd2*_cc[_i], _rd2*_ss[_i], _rh2,    _rd2*_cc[_i], _rd2*_ss[_i], _rh2];
         
-        for( var _i = 1; _i <= BONK_DRAW_SPHERE_STEPS; _i++ )
+        for( var _i = 1; _i <= UGG_SPHERE_STEPS; _i++ )
         {
             var _prev_a = _this_a;
             var _prev_b = _this_b;

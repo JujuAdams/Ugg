@@ -7,9 +7,9 @@
 /// @param [color]
 /// @param [thickness]
 
-function BonkDebugDrawRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = BONK_DRAW_DEFAULT_DIFFUSE_COLOR, _thickness = BONK_DRAW_RAY_THICKNESS)
+function BonkDebugDrawRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_RAY_THICKNESS)
 {
-    __BONK_GLOBAL
+    __UGG_GLOBAL
     
     var _dx = _x2 - _x1;
     var _dy = _y2 - _y1;

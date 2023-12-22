@@ -1,7 +1,7 @@
 if (showInfo)
 {
-    var _string  = "Bonk " + __BONK_VERSION + "\n";
-        _string += "@jujuadams " + __BONK_DATE + "\n";
+    var _string  = "Bonk " + __UGG_VERSION + "\n";
+        _string += "@jujuadams " + __UGG_DATE + "\n";
         _string += "\n";
         _string += "camera position = " + string(camX) + ", " + string(camY) + ", " + string(camZ) + "\n";
         _string += "camera yaw/pitch = " + string(camYaw) + ", " + string(camPitch) + "\n";

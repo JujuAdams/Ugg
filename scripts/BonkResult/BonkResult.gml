@@ -22,11 +22,11 @@ function BonkResult(_collided, _normalX, _normalY, _normalZ, _depth) constructor
     
     
     
-    static DebugDraw = function(_color = BONK_DRAW_DEFAULT_DIFFUSE_COLOR, _thickness = BONK_DRAW_RAY_THICKNESS)
+    static DebugDraw = function(_color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_RAY_THICKNESS)
     {
         if (collided && (x != undefined) && (y != undefined) && (z != undefined))
         {
-            BonkDebugDrawRay(x, y, z, BONK_DRAW_RESULT_NORMAL_LENGTH*normalX + x, BONK_DRAW_RESULT_NORMAL_LENGTH*normalY + y, BONK_DRAW_RESULT_NORMAL_LENGTH*normalZ + z, _color, _thickness);
+            BonkDebugDrawRay(x, y, z, UGG_RESULT_NORMAL_LENGTH*normalX + x, UGG_RESULT_NORMAL_LENGTH*normalY + y, UGG_RESULT_NORMAL_LENGTH*normalZ + z, _color, _thickness);
         }
     }
     
