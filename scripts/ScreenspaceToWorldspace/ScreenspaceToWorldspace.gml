@@ -21,10 +21,10 @@ function ScreenspaceToWorldspace(_x, _y, _width, _height, _inverseMatrix)
     
     if (_inverseMatrix == undefined)
     {
-        _inverseMatrix = UggMatrixInverse(matrix_multiply(matrix_get(matrix_view), matrix_get(matrix_projection)));
+        _inverseMatrix = MatrixInverse(matrix_multiply(matrix_get(matrix_view), matrix_get(matrix_projection)));
     }
     
-    var _vector = UggMatrixTransformVertexExt(_inverseMatrix, _x, _y, 1.0, 1.0);
+    var _vector = MatrixTransformVertexExt(_inverseMatrix, _x, _y, 1.0, 1.0);
     
     var _inverseW = 1/_vector[3];
     _vector[@ 0] *= _inverseW;
