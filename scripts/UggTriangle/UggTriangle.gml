@@ -3,7 +3,7 @@
 /// @param vertex2
 /// @param color
 
-function BonkDebugDrawTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_DEFAULT_DIFFUSE_COLOR) 
+function UggTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_DEFAULT_DIFFUSE_COLOR) 
 {
     __UGG_GLOBAL
     
@@ -26,7 +26,7 @@ function BonkDebugDrawTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _col
     
     
 	var _vertexBuffer = vertex_create_buffer();
-	vertex_begin(_vertexBuffer, _global.__bonkVertexFormat);
+	vertex_begin(_vertexBuffer, _global.__uggVertexFormat);
 	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
 	vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
 	vertex_position_3d(_vertexBuffer, _x3, _y3, _z3); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
@@ -34,8 +34,8 @@ function BonkDebugDrawTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _col
     
     
     
-    shader_set(__shdBonk);
-    shader_set_uniform_f(_global.__bonkUniform_shdBonk_u_vColor, color_get_red(  _color)/255,
+    shader_set(__shdUgg);
+    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
                                                                  color_get_green(_color)/255,
                                                                  color_get_blue( _color)/255);
     vertex_submit(_vertexBuffer, pr_trianglelist, -1);

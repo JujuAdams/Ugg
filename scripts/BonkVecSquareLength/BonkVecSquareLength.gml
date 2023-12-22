@@ -1,6 +1,6 @@
 /// @param vector
 
-function BonkVecSquareLength(_a)
+function UggVecSquareLength(_a)
 {
     var _x = _a[0];
     var _y = _a[1];

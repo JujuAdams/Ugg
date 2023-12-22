@@ -1,11 +1,11 @@
 // Feather disable all
 
-function __BonkPrebuildSphere()
+function __UggPrebuildSphere()
 {
     __UGG_GLOBAL
     
     var _vertexBuffer = vertex_create_buffer();
-    vertex_begin(_vertexBuffer, _global.__bonkVertexFormat);
+    vertex_begin(_vertexBuffer, _global.__uggVertexFormat);
     
     var _rows = 0.5*UGG_SPHERE_STEPS + 0.5;
     
@@ -23,7 +23,7 @@ function __BonkPrebuildSphere()
     }
     
     var _vbuff = vertex_create_buffer();
-    vertex_begin( _vbuff, _global.__bonkVertexFormat);
+    vertex_begin( _vbuff, _global.__uggVertexFormat);
     
     for(var _j = 0; _j < _rows; _j++)
     {

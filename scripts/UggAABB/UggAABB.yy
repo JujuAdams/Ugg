@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BonkDebugDrawTriangle",
+  "name": "UggAABB",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Debug Drawing",
-    "path": "folders/Bonk/Debug Drawing.yy",
+    "name": "Ugg",
+    "path": "folders/Bonk/Ugg.yy",
   },
 }

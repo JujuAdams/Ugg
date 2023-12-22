@@ -1,4 +1,4 @@
-function BonkQuatRotateWorldX(_quat, _angle)
+function UggQuatRotateWorldX(_quat, _angle)
 {
-    return BonkQuatMultiply(_quat, [0.5*dsin(_angle), 0, 0, dcos(0.5*_angle)]);
+    return UggQuatMultiply(_quat, [0.5*dsin(_angle), 0, 0, dcos(0.5*_angle)]);
 }

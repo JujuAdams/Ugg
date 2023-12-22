@@ -1,6 +1,6 @@
 if (showInfo)
 {
-    var _string  = "Bonk " + __UGG_VERSION + "\n";
+    var _string  = "Ugg " + __UGG_VERSION + "\n";
         _string += "@jujuadams " + __UGG_DATE + "\n";
         _string += "\n";
         _string += "camera position = " + string(camX) + ", " + string(camY) + ", " + string(camZ) + "\n";

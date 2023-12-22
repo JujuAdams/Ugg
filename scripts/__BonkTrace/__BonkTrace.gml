@@ -1,8 +1,8 @@
 // Feather disable all
 
-function __BonkTrace()
+function __UggTrace()
 {
-    var _string = "Bonk: ";
+    var _string = "Ugg: ";
     var _i = 0;
     repeat(argument_count)
     {

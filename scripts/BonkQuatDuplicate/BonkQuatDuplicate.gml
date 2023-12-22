@@ -2,7 +2,7 @@
 /// 
 /// @param quaternion
 
-function BonkQuatDuplicate(_quat)
+function UggQuatDuplicate(_quat)
 {
     var _new = array_create(4);
     array_copy(_new, 0, _quat, 0, 4);

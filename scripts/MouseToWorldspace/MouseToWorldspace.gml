@@ -9,5 +9,5 @@ function MouseToWorldspace(_viewMatrix = matrix_get(matrix_view), _projectionMat
                                        window_get_height() - window_mouse_get_y(), //GM's coordinate system requires that we invert this axis
                                        window_get_width(),
                                        window_get_height(),
-                                       BonkMatrixInverse(matrix_multiply(_viewMatrix, _projectionMatrix)));
+                                       UggMatrixInverse(matrix_multiply(_viewMatrix, _projectionMatrix)));
 }

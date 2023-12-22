@@ -5,7 +5,7 @@
 /// @param y2
 /// @param z2
 
-function BonkQuatFromVectors(_x1, _y1, _z1, _x2, _y2, _z2)
+function UggQuatFromVectors(_x1, _y1, _z1, _x2, _y2, _z2)
 {
     var _inverseLength = 1 / sqrt(_x1*_x1 + _y1*_y1 + _z1*_z1);
     _x1 *= _inverseLength;

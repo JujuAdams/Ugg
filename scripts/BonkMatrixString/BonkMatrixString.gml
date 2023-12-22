@@ -4,7 +4,7 @@
 /// @param matrix          4x4 matrix to stringify
 /// @param [newlineChar]   Character to use for each newline. If not provided, this will default to \n
 
-function BonkMatrixString(_matrix, _newline)
+function UggMatrixString(_matrix, _newline)
 {
     if (_newline == undefined) _newline = "\n";
     

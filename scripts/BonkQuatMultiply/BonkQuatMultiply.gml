@@ -1,4 +1,4 @@
-function BonkQuatMultiply(_a, _b)
+function UggQuatMultiply(_a, _b)
 {
     var _ax = _a[0];
     var _ay = _a[1];

@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __BonkPrebuildCylinder()
+function __UggPrebuildCylinder()
 {
     __UGG_GLOBAL
     
@@ -27,7 +27,7 @@ function __BonkPrebuildCylinder()
 	var _ry = 0.5*( _y2 - _y1 );
 
 	var _vertexBuffer = vertex_create_buffer();
-	vertex_begin(_vertexBuffer, _global.__bonkVertexFormat);
+	vertex_begin(_vertexBuffer, _global.__uggVertexFormat);
   
 	var _bx = _mx + _cc[0]*_rx;
 	var _by = _my + _ss[0]*_ry;

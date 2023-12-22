@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BonkResult",
+  "name": "UggCylinder",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Bonk",
-    "path": "folders/Bonk.yy",
+    "name": "Ugg",
+    "path": "folders/Bonk/Ugg.yy",
   },
 }

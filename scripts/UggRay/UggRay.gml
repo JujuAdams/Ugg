@@ -7,7 +7,7 @@
 /// @param [color]
 /// @param [thickness]
 
-function BonkDebugDrawRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_RAY_THICKNESS)
+function UggRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_RAY_THICKNESS)
 {
     __UGG_GLOBAL
     
@@ -30,11 +30,11 @@ function BonkDebugDrawRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIF
        _matrix = matrix_multiply(_matrix, _worldMatrix);
     matrix_set(matrix_world, _matrix);
     
-    shader_set(__shdBonk);
-    shader_set_uniform_f(_global.__bonkUniform_shdBonk_u_vColor, color_get_red(  _color)/255,
+    shader_set(__shdUgg);
+    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
                                                                  color_get_green(_color)/255,
                                                                  color_get_blue( _color)/255);
-    vertex_submit(_global.__bonkRay, pr_trianglelist, -1);
+    vertex_submit(_global.__uggRay, pr_trianglelist, -1);
     shader_reset();
     
     matrix_set(matrix_world, _worldMatrix);

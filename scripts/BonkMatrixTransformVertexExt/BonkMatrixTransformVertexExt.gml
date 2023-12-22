@@ -7,7 +7,7 @@
 /// @param z        z-component of the input vec4
 /// @param w        w-component of the input vec4
 
-function BonkMatrixTransformVertexExt(_matrix, _x_in, _y_in, _z_in, _w_in)
+function UggMatrixTransformVertexExt(_matrix, _x_in, _y_in, _z_in, _w_in)
 {
     var _x = _x_in*_matrix[0] + _y_in*_matrix[4] + _z_in*_matrix[ 8] + _w_in*_matrix[12];
     var _y = _x_in*_matrix[1] + _y_in*_matrix[5] + _z_in*_matrix[ 9] + _w_in*_matrix[13];

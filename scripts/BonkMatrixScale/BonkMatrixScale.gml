@@ -1,4 +1,4 @@
-function BonkMatrixScale(_xScale, _yScale, _zScale, _matrix)
+function UggMatrixScale(_xScale, _yScale, _zScale, _matrix)
 {
     if (_matrix == undefined)
     {

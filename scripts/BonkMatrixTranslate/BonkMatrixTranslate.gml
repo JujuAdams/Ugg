@@ -1,4 +1,4 @@
-function BonkMatrixTranslate(_x, _y, _z, _matrix)
+function UggMatrixTranslate(_x, _y, _z, _matrix)
 {
     if (_matrix == undefined)
     {

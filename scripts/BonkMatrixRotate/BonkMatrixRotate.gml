@@ -1,4 +1,4 @@
-function BonkMatrixRotate(_xAngle, _yAngle, _zAngle, _matrix)
+function UggMatrixRotate(_xAngle, _yAngle, _zAngle, _matrix)
 {
     if (_matrix == undefined)
     {

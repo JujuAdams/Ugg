@@ -5,7 +5,7 @@
 /// @param yAngle  In degrees
 /// @param zAngle  In degrees
 
-function BonkQuatFromEulerAngles(_xAngle, _yAngle, _zAngle)
+function UggQuatFromEulerAngles(_xAngle, _yAngle, _zAngle)
 {
     var _sinX = dsin(0.5*_xAngle);
     var _sinY = dsin(0.5*_yAngle);

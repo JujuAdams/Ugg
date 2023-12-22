@@ -1,6 +1,6 @@
-function BonkMatrixResetWorld()
+function UggMatrixResetWorld()
 {
     __UGG_GLOBAL
     
-    matrix_set(matrix_world, _global.__bonkIdentityMatrix);
+    matrix_set(matrix_world, _global.__uggIdentityMatrix);
 }

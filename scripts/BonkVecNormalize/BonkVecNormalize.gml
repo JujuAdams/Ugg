@@ -1,6 +1,6 @@
 /// @param vector
 
-function BonkVecNormalize(_a)
+function UggVecNormalize(_a)
 {
     var _x = _a[0];
     var _y = _a[1];

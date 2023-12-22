@@ -1,1 +1,1 @@
-ray = new BonkRay();
+ray = new UggRay();

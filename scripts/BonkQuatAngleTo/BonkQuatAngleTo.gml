@@ -3,7 +3,7 @@
 /// @param y
 /// @param z
 
-function BonkQuatAngleTo(_quat, _x, _y, _z)
+function UggQuatAngleTo(_quat, _x, _y, _z)
 {
-    return 2*darccos(abs(clamp(BonkQuatDot(_quat, [_x, _y, _z, 0]), -1, 1)));
+    return 2*darccos(abs(clamp(UggQuatDot(_quat, [_x, _y, _z, 0]), -1, 1)));
 }

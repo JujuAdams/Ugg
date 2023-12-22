@@ -1,4 +1,4 @@
-function BonkQuatNormalize(_quat)
+function UggQuatNormalize(_quat)
 {
     var _x = _quat[0];
     var _y = _quat[1];
@@ -6,7 +6,7 @@ function BonkQuatNormalize(_quat)
     var _w = _quat[3];
     
     var _length = sqrt(_x*_x + _y*_y + _z*_z + _w*_w);
-    if (_length == 0) return BonkQuatIdentity();
+    if (_length == 0) return UggQuatIdentity();
     
     var _inverseLength = 1/_length;
     return [ _quat[0]*_inverseLength,

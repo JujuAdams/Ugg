@@ -2,43 +2,43 @@
 #macro  __UGG_DATE     "2023-12-22"
 
 #macro __UGG_VERY_LARGE  1000000
-#macro __UGG_GLOBAL  static _global = __Bonk();
+#macro __UGG_GLOBAL  static _global = __Ugg();
 
 
 
-__Bonk();
+__Ugg();
 
-function __Bonk()
+function __Ugg()
 {
     static _global = undefined;
     if (_global != undefined) return _global;
     _global = {};
     
-    __BonkTrace("Welcome to Bonk by Juju Adams! This is version ", __UGG_VERSION, " ", __UGG_DATE);
+    __UggTrace("Welcome to Ugg by Juju Adams! This is version ", __UGG_VERSION, " ", __UGG_DATE);
     
     vertex_format_begin();
     vertex_format_add_position_3d();
     vertex_format_add_normal();
-    _global.__bonkVertexFormat = vertex_format_end();
+    _global.__uggVertexFormat = vertex_format_end();
     
-    _global.__bonkUniform_shdBonk_u_vColor = shader_get_uniform(__shdBonk, "u_vColor");
+    _global.__uggUniform_shdUgg_u_vColor = shader_get_uniform(__shdUgg, "u_vColor");
     
-    _global.__bonkSphere   = __BonkPrebuildSphere();
-    _global.__bonkCylinder = __BonkPrebuildCylinder();
-    _global.__bonkAABB     = __BonkPrebuildAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
-    _global.__bonkRay      = __BonkPrebuildAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
+    _global.__uggSphere   = __UggPrebuildSphere();
+    _global.__uggCylinder = __UggPrebuildCylinder();
+    _global.__uggAABB     = __UggPrebuildAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
+    _global.__uggRay      = __UggPrebuildAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
     
-    _global.__bonkIdentityMatrix = matrix_build_identity();
+    _global.__uggIdentityMatrix = matrix_build_identity();
     
     
     
-    shader_set(__shdBonk);
-    shader_set_uniform_f(shader_get_uniform(__shdBonk, "u_vAmbientColor"),
+    shader_set(__shdUgg);
+    shader_set_uniform_f(shader_get_uniform(__shdUgg, "u_vAmbientColor"),
                          color_get_red(  UGG_AMBIENT_LIGHT_COLOR)/255,
                          color_get_green(UGG_AMBIENT_LIGHT_COLOR)/255,
                          color_get_blue( UGG_AMBIENT_LIGHT_COLOR)/255);
     
-    shader_set_uniform_f(shader_get_uniform(__shdBonk, "u_vDirectLightColor"),
+    shader_set_uniform_f(shader_get_uniform(__shdUgg, "u_vDirectLightColor"),
                          color_get_red(  UGG_LIGHT_COLOR)/255,
                          color_get_green(UGG_LIGHT_COLOR)/255,
                          color_get_blue( UGG_LIGHT_COLOR)/255);
@@ -50,8 +50,8 @@ function __Bonk()
     var _directionY = UGG_LIGHT_DIRECTION_Y*_inverseLength;
     var _directionZ = UGG_LIGHT_DIRECTION_Z*_inverseLength;
     
-    shader_set_uniform_f(shader_get_uniform(__shdBonk, "u_vDirectLightDirection"), _directionX, _directionY, _directionZ);
-    shader_set_uniform_f(_global.__bonkUniform_shdBonk_u_vColor, color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR)/255,
+    shader_set_uniform_f(shader_get_uniform(__shdUgg, "u_vDirectLightDirection"), _directionX, _directionY, _directionZ);
+    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR)/255,
                                                                  color_get_green(UGG_DEFAULT_DIFFUSE_COLOR)/255,
                                                                  color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR)/255);
     shader_reset();

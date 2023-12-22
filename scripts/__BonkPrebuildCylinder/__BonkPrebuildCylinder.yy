@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "(System)",
-    "path": "folders/Bonk/(System).yy",
+    "path": "folders/Bonk/Ugg/(System).yy",
   },
 }

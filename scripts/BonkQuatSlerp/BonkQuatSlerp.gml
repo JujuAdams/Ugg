@@ -1,7 +1,7 @@
-function BonkQuatSlerp(_a, _b, _t)
+function UggQuatSlerp(_a, _b, _t)
 {
-    if (_t == 0) return BonkQuatDuplicate(_a);
-    if (_t == 1) return BonkQuatDuplicate(_b);
+    if (_t == 0) return UggQuatDuplicate(_a);
+    if (_t == 1) return UggQuatDuplicate(_b);
     
     var _ax = _a[0];
     var _ay = _a[1];

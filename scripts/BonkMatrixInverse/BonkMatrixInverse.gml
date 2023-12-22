@@ -2,7 +2,7 @@
 /// 
 /// @param matrix   4x4 matrix to calcuate the inverse of
 
-function BonkMatrixInverse(_matrix)
+function UggMatrixInverse(_matrix)
 {
     var _inv = array_create(16, undefined);
 
@@ -121,7 +121,7 @@ function BonkMatrixInverse(_matrix)
     var _det = _matrix[0]*_inv[0] + _matrix[1]*_inv[4] + _matrix[2]*_inv[8] + _matrix[3]*_inv[12];
     if (_det == 0)
     {
-        __BonkTrace("Determinant of the matrix is zero:", BonkMatrixString(_matrix, " |"));
+        __UggTrace("Determinant of the matrix is zero:", UggMatrixString(_matrix, " |"));
         return _matrix;
     }
 

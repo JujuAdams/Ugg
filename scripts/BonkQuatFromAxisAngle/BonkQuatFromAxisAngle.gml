@@ -3,7 +3,7 @@
 /// @param axisZ   z-component of rotation axis
 /// @param angle   Angle of rotation, in degrees
 
-function BonkQuatFromAxisAngle(_axisX, _axisY, _axisZ, _angle)
+function UggQuatFromAxisAngle(_axisX, _axisY, _axisZ, _angle)
 {
     var _inverseLength = 1 / sqrt(_axisX*_axisX + _axisY*_axisY + _axisZ*_axisZ);
     _axisX *= _inverseLength;

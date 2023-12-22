@@ -4,7 +4,7 @@
 /// @param aabbMin
 /// @param aabbMax
 
-function __BonkAABBPointInsideMinMax(_point, _min, _max)
+function __UggAABBPointInsideMinMax(_point, _min, _max)
 {
     if (_point[0] < _min[0]) return false;
     if (_point[1] < _min[1]) return false;

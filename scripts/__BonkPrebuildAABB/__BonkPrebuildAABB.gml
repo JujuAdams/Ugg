@@ -7,13 +7,13 @@
 /// @param y2
 /// @param z2
 
-function __BonkPrebuildAABB(_x1, _y1, _z1, _x2, _y2, _z2)
+function __UggPrebuildAABB(_x1, _y1, _z1, _x2, _y2, _z2)
 {
     __UGG_GLOBAL
     
     
     var _vertexBuffer = vertex_create_buffer();
-    vertex_begin( _vertexBuffer, _global.__bonkVertexFormat);
+    vertex_begin( _vertexBuffer, _global.__uggVertexFormat);
     
     
     

@@ -1,23 +1,24 @@
 /// @param x
 /// @param y
 /// @param z
+/// @param height
 /// @param radius
 /// @param [color]
 
-function BonkDebugDrawSphere(_x, _y, _z, _radius, _color = UGG_DEFAULT_DIFFUSE_COLOR)
+function UggCylinder(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {
     __UGG_GLOBAL
     
     var _worldMatrix = matrix_get(matrix_world);
-    var _matrix = matrix_build(_x, _y, _z,   0, 0, 0,   _radius, _radius, _radius);
+    var _matrix = matrix_build(_x, _y, _z,   0, 0, 0,   _radius, _radius, _height);
         _matrix = matrix_multiply(_matrix, _worldMatrix);
     matrix_set(matrix_world, _matrix);
     
-    shader_set(__shdBonk);
-    shader_set_uniform_f(_global.__bonkUniform_shdBonk_u_vColor, color_get_red(  _color)/255,
+    shader_set(__shdUgg);
+    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
                                                                  color_get_green(_color)/255,
                                                                  color_get_blue( _color)/255);
-    vertex_submit(_global.__bonkSphere, pr_trianglelist, -1);
+    vertex_submit(_global.__uggCylinder, pr_trianglelist, -1);
     shader_reset();
     
     matrix_set(matrix_world, _worldMatrix);

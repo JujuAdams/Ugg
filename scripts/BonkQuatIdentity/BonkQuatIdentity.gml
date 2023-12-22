@@ -2,7 +2,7 @@
 ///
 /// Quaternions are expressed as vec4s with the format [x, y, z, w]
 
-function BonkQuatIdentity()
+function UggQuatIdentity()
 {
     return [0, 0, 0, 1];
 }

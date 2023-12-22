@@ -1,4 +1,4 @@
-function BonkQuatGetRotationMatrix(_quat)
+function UggQuatGetRotationMatrix(_quat)
 {
     var _x = _quat[0];
     var _y = _quat[1];

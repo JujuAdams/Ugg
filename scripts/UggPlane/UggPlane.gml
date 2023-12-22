@@ -6,36 +6,36 @@
 /// @param zNormal
 /// @param [color]
 
-function BonkDebugDrawPlane(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = UGG_DEFAULT_DIFFUSE_COLOR)
+function UggPlane(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {
     __UGG_GLOBAL
     
     //TODO - Optimise this and draw it relative to the camera's position
     
     var _vertexBuffer = vertex_create_buffer();
-    vertex_begin( _vertexBuffer, _global.__bonkVertexFormat);
+    vertex_begin( _vertexBuffer, _global.__uggVertexFormat);
     
     var _position = [_x, _y, _z];
-    var _normal = BonkVecNormalize([_xNormal, _yNormal, _zNormal]);
+    var _normal = UggVecNormalize([_xNormal, _yNormal, _zNormal]);
     
-    if (!BonkVecEqual(_normal, [0, 0, 1]) && !BonkVecEqual(_normal, [0, 0, -1]))
+    if (!UggVecEqual(_normal, [0, 0, 1]) && !UggVecEqual(_normal, [0, 0, -1]))
     {
-        var _tangent = BonkVecCross(_normal, [0, 0, 1]);
+        var _tangent = UggVecCross(_normal, [0, 0, 1]);
     }
     else
     {
-        var _tangent = BonkVecCross(_normal, [1, 0, 0]);
+        var _tangent = UggVecCross(_normal, [1, 0, 0]);
     }
     
-    var _bitangent = BonkVecCross(_normal, _tangent);
+    var _bitangent = UggVecCross(_normal, _tangent);
     
-    _tangent   = BonkVecMultiply(_tangent,   UGG_PLANE_SIZE);
-    _bitangent = BonkVecMultiply(_bitangent, UGG_PLANE_SIZE);
+    _tangent   = UggVecMultiply(_tangent,   UGG_PLANE_SIZE);
+    _bitangent = UggVecMultiply(_bitangent, UGG_PLANE_SIZE);
     
-    var _a = BonkVecAdd(     BonkVecAdd(     _position, _tangent), _bitangent);
-    var _b = BonkVecAdd(     BonkVecSubtract(_position, _tangent), _bitangent);
-    var _c = BonkVecSubtract(BonkVecAdd(     _position, _tangent), _bitangent);
-    var _d = BonkVecSubtract(BonkVecSubtract(_position, _tangent), _bitangent);
+    var _a = UggVecAdd(     UggVecAdd(     _position, _tangent), _bitangent);
+    var _b = UggVecAdd(     UggVecSubtract(_position, _tangent), _bitangent);
+    var _c = UggVecSubtract(UggVecAdd(     _position, _tangent), _bitangent);
+    var _d = UggVecSubtract(UggVecSubtract(_position, _tangent), _bitangent);
     
     vertex_position_3d(_vertexBuffer, _a[0], _a[1], _a[2]); vertex_normal(_vertexBuffer, _xNormal, _yNormal, _zNormal);
     vertex_position_3d(_vertexBuffer, _b[0], _b[1], _b[2]); vertex_normal(_vertexBuffer, _xNormal, _yNormal, _zNormal);
@@ -47,8 +47,8 @@ function BonkDebugDrawPlane(_x, _y, _z, _xNormal, _yNormal, _zNormal, _color = U
     
     vertex_end(_vertexBuffer);
     
-    shader_set(__shdBonk);
-    shader_set_uniform_f(_global.__bonkUniform_shdBonk_u_vColor, color_get_red(  _color)/255,
+    shader_set(__shdUgg);
+    shader_set_uniform_f(_global.__uggUniform_shdUgg_u_vColor, color_get_red(  _color)/255,
                                                                  color_get_green(_color)/255,
                                                                  color_get_blue( _color)/255);
     vertex_submit(_vertexBuffer, pr_trianglelist, -1);
