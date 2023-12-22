@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BonkQuatIdentity",
+  "name": "__BonkError",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Quaternions",
-    "path": "folders/Quaternions.yy",
+    "name": "(System)",
+    "path": "folders/Bonk/(System).yy",
   },
 }

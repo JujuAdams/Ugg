@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__BentoError",
+  "name": "__BonkTrace",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

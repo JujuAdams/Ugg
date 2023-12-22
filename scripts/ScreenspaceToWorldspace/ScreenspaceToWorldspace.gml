@@ -6,7 +6,7 @@
 /// @param [height]                        Height of the screenspace render target. If not provided, the height of the current render target (either a surface or the backbuffer) will be used
 /// @param [inverseViewProjectionMatrix]   The inverse of the view*projection matrix. If not provided, the current view and projection matrix will be used
 
-function BonkScreenspaceToWorldspace(_x, _y, _width, _height, _inverseMatrix)
+function ScreenspaceToWorldspace(_x, _y, _width, _height, _inverseMatrix)
 {
     if ((_width == undefined) || (_height == undefined))
     {

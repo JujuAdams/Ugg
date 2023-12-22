@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Quaternions",
-    "path": "folders/Bonk/Quaternions.yy",
+    "path": "folders/Quaternions.yy",
   },
 }

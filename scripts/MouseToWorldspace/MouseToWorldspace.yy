@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BonkQuatIdentity",
+  "name": "MouseToWorldspace",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Quaternions",
-    "path": "folders/Quaternions.yy",
+    "name": "ugg",
+    "path": "ugg.yyp",
   },
 }

@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__BentoTrace",
+  "name": "ScreenspaceToWorldspace",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Bonk/(System).yy",
+    "name": "ugg",
+    "path": "ugg.yyp",
   },
 }
