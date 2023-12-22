@@ -1,4 +1,3 @@
 UggTriangle(x, y, 0,
             x + 100, y, 20,
-            x, y + 120, -20,
-            c_lime);
+            x, y + 120, -20);

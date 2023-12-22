@@ -1,1 +1,1 @@
-UggPoint(x, y, 0, c_lime);
+UggPoint(x, y, 0);

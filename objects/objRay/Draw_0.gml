@@ -1,1 +1,1 @@
-UggRay(x, y, 0, x + 40, y + 40, 40, c_lime);
+UggRay(x, y, 0, x + 40, y + 40, 40);

@@ -13,7 +13,7 @@ function __Ugg()
     if (_global != undefined) return _global;
     _global = {};
     
-    __UggTrace("Welcome to Ugg by Juju Adams! This is version ", __UGG_VERSION, " ", __UGG_DATE);
+    show_debug_message("Welcome to Ugg by Juju Adams! This is version " + __UGG_VERSION + " " + __UGG_DATE);
     
     vertex_format_begin();
     vertex_format_add_position_3d();
