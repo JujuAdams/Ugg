@@ -22,8 +22,9 @@ function __Ugg()
     
     _global.__sphere   = __UggPrebuildSphere();
     _global.__cylinder = __UggPrebuildCylinder();
+    _global.__cone     = __UggPrebuildCone();
     _global.__aabb     = __UggPrebuildAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
-    _global.__ray      = __UggPrebuildAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
+    _global.__line     = __UggPrebuildAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
     
     
     

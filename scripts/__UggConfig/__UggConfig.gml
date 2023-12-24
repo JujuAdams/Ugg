@@ -1,7 +1,8 @@
-#macro UGG_POINT_RADIUS    2
-#macro UGG_SPHERE_STEPS    24
-#macro UGG_CYLINDER_STEPS  24
-#macro UGG_LINE_THICKNESS   2
+#macro UGG_POINT_RADIUS       2
+#macro UGG_SPHERE_STEPS      24
+#macro UGG_CYLINDER_STEPS    24
+#macro UGG_CONE_STEPS        24
+#macro UGG_LINE_THICKNESS     2
 #macro UGG_PLANE_SIZE      1000
 
 #macro UGG_DEFAULT_DIFFUSE_COLOR  c_white

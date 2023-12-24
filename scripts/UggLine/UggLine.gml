@@ -9,7 +9,7 @@
 
 function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_LINE_THICKNESS)
 {
-    static _ray = __Ugg().__ray;
+    static _ray = __Ugg().__line;
     __UGG_COLOR_UNIFORM
     
     var _dx = _x2 - _x1;
