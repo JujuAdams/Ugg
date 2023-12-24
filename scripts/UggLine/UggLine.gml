@@ -7,7 +7,7 @@
 /// @param [color]
 /// @param [thickness]
 
-function UggRay(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_RAY_THICKNESS)
+function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_LINE_THICKNESS)
 {
     static _ray = __Ugg().__ray;
     __UGG_COLOR_UNIFORM

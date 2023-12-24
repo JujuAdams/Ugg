@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "UggRay",
+  "name": "__UggMatrixTransformVertex4DDivW",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Ugg",
-    "path": "folders/Ugg.yy",
+    "name": "(System)",
+    "path": "folders/Ugg/(System).yy",
   },
 }
