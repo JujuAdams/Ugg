@@ -19,16 +19,16 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
     var _length = sqrt(_dx*_dx + _dy*_dy + _dz*_dz);
     if (_length == 0) return false;
 
-    var _plane_length = sqrt(_dx*_dx + _dy*_dy);
-    var _z_angle = point_direction(0, 0, _plane_length, _dz);
-    var _p_angle = point_direction(0, 0, _dx, _dy);
+    var _planeLength = sqrt(_dx*_dx + _dy*_dy);
+    var _zAngle = point_direction(0, 0, _planeLength, _dz);
+    var _pAngle = point_direction(0, 0, _dx, _dy);
     
     var _worldMatrix = matrix_get(matrix_world);
     var _matrix = matrix_build(0,0,0,   0,0,0,   _thickness, _thickness, _length);
-       _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, -90 - _z_angle, 0,   1,1,1));
-       _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, 0, _p_angle,   1,1,1));
-       _matrix = matrix_multiply(_matrix, matrix_build(_x1, _y1, _z1,   0,0,0,   1,1,1));
-       _matrix = matrix_multiply(_matrix, _worldMatrix);
+        _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
+        _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
+        _matrix = matrix_multiply(_matrix, matrix_build(_x1, _y1, _z1,   0,0,0,   1,1,1));
+        _matrix = matrix_multiply(_matrix, _worldMatrix);
     matrix_set(matrix_world, _matrix);
     
     shader_set(__shdUgg);

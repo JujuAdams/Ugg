@@ -1,1 +1,1 @@
-UggPyramid(x, y, x + 100, y + 200, 0, 50);
+UggPyramid(x, y, 0, 50, 100, 75);
