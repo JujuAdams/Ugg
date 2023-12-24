@@ -4,7 +4,7 @@
   "name": "Windows",
   "option_windows_display_name": "Ugg",
   "option_windows_executable_name": "${project_name}.exe",
-  "option_windows_version": "1.0.0.0",
+  "option_windows_version": "0.3.0.0",
   "option_windows_company_info": "Juju Adams",
   "option_windows_product_info": "Ugg",
   "option_windows_copyright_info": "Juju Adams (c) 2023",
