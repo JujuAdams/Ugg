@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "ugg",
-    "path": "ugg.yyp",
+    "name": "Ugg",
+    "path": "folders/Ugg.yy",
   },
 }
