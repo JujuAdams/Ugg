@@ -54,7 +54,7 @@ function UggTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_D
         var _normalZ = -(_dy12*_dx13 - _dx12*_dy13);
         
     	var _vertexBuffer = vertex_create_buffer();
-    	vertex_begin(_vertexBuffer, _vertexFormat);
+    	vertex_begin(_vertexBuffer, _volumeVertexFormat);
     	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
     	vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
     	vertex_position_3d(_vertexBuffer, _x3, _y3, _z3); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
