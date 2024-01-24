@@ -19,7 +19,7 @@ function __Ugg()
     
     
     
-    _global.__wireframe = true;
+    _global.__wireframe = UGG_START_WIREFRAME;
     
     vertex_format_begin();
     vertex_format_add_position_3d();

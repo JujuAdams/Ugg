@@ -1,3 +1,5 @@
+#macro UGG_START_WIREFRAME  false
+
 #macro UGG_POINT_RADIUS       2
 #macro UGG_SPHERE_STEPS      24
 #macro UGG_CYLINDER_STEPS    24
