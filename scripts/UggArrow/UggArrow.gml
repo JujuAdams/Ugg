@@ -12,11 +12,14 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
 {
     //TODO - Optimise
     
-    if (_arrowSize == undefined) _arrowSize = 4*_thickness;
-    
-    static _line    = __Ugg().__volumeLine;
-    static _pyramid = __Ugg().__volumePyramid;
+    __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
+    static _volumeLine       = _global.__volumeLine;
+    static _volumePyramid    = _global.__volumePyramid;
+    static _wireframeLine    = _global.__wireframeLine;
+    static _wireframePyramid = _global.__wireframePyramid;
+    
+    if (_arrowSize == undefined) _arrowSize = 4*_thickness;
     
     var _dx = _x2 - _x1;
     var _dy = _y2 - _y1;
@@ -48,26 +51,44 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     
     var _worldMatrix = matrix_get(matrix_world);
     
-    shader_set(__shdUggVolume);
-    shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
-                                           color_get_green(_color)/255,
-                                           color_get_blue( _color)/255);
-                                           
-    var _matrix = matrix_build(0,0,0,   0,0,0,   _thickness, _thickness, _length);
-        _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
-        _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
-        _matrix = matrix_multiply(_matrix, matrix_build(_x1, _y1, _z1,   0,0,0,   1,1,1));
-        _matrix = matrix_multiply(_matrix, _worldMatrix);
-    matrix_set(matrix_world, _matrix);
-    vertex_submit(_line, pr_trianglelist, -1);
+    var _lineMatrix = matrix_build(0,0,0,   0,0,0,   _thickness, _thickness, _length);
+        _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
+        _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
+        _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(_x1, _y1, _z1,   0,0,0,   1,1,1));
+        _lineMatrix = matrix_multiply(_lineMatrix, _worldMatrix);
+        
+    var _pyramidMatrix = matrix_build(0,0,0,   0,0,0,   _arrowSize, _arrowSize, _arrowSize);
+        _pyramidMatrix = matrix_multiply(_pyramidMatrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
+        _pyramidMatrix = matrix_multiply(_pyramidMatrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
+        _pyramidMatrix = matrix_multiply(_pyramidMatrix, matrix_build(_ax, _ay, _az,   0,0,0,   1,1,1));
+        _pyramidMatrix = matrix_multiply(_pyramidMatrix, _worldMatrix);
     
-    var _matrix = matrix_build(0,0,0,   0,0,0,   _arrowSize, _arrowSize, _arrowSize);
-        _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
-        _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
-        _matrix = matrix_multiply(_matrix, matrix_build(_ax, _ay, _az,   0,0,0,   1,1,1));
-        _matrix = matrix_multiply(_matrix, _worldMatrix);
-    matrix_set(matrix_world, _matrix);
-    vertex_submit(_pyramid, pr_trianglelist, -1);
+    if (_global.__wireframe)
+    {
+        shader_set(__shdUggWireframe);
+        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(  _color)/255,
+                                                        color_get_green(_color)/255,
+                                                        color_get_blue( _color)/255);
+        
+        matrix_set(matrix_world, _lineMatrix);
+        vertex_submit(_wireframeLine, pr_linelist, -1);
+        
+        matrix_set(matrix_world, _pyramidMatrix);
+        vertex_submit(_wireframePyramid, pr_linelist, -1);
+    }
+    else
+    {
+        shader_set(__shdUggVolume);
+        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
+                                                     color_get_green(_color)/255,
+                                                     color_get_blue( _color)/255);
+        
+        matrix_set(matrix_world, _lineMatrix);
+        vertex_submit(_volumeLine, pr_trianglelist, -1);
+        
+        matrix_set(matrix_world, _pyramidMatrix);
+        vertex_submit(_volumePyramid, pr_trianglelist, -1);
+    }
     
     shader_reset();
     matrix_set(matrix_world, _worldMatrix);
