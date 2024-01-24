@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __UggPrebuildCylinder()
+function __UggPrebuildVolumeCylinder()
 {
     var _x1 = -1;
     var _y1 = -1;
@@ -25,7 +25,7 @@ function __UggPrebuildCylinder()
 	var _ry = 0.5*( _y2 - _y1 );
 
 	var _vertexBuffer = vertex_create_buffer();
-	vertex_begin(_vertexBuffer, __Ugg().__vertexFormat);
+	vertex_begin(_vertexBuffer, __Ugg().__volumeVertexFormat);
   
 	var _bx = _mx + _cc[0]*_rx;
 	var _by = _my + _ss[0]*_ry;

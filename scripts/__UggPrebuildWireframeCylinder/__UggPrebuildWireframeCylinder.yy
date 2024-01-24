@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__UggPrebuildPyramid",
+  "name": "__UggPrebuildWireframeCylinder",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Ugg/(System).yy",
+    "name": "Wireframes",
+    "path": "folders/Ugg/(System)/Wireframes.yy",
   },
 }

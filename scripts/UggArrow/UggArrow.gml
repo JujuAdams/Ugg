@@ -14,9 +14,9 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     
     if (_arrowSize == undefined) _arrowSize = 4*_thickness;
     
-    static _line    = __Ugg().__line;
-    static _pyramid = __Ugg().__pyramid;
-    __UGG_COLOR_UNIFORM
+    static _line    = __Ugg().__volumeLine;
+    static _pyramid = __Ugg().__volumePyramid;
+    __UGG_COLOR_UNIFORMS
     
     var _dx = _x2 - _x1;
     var _dy = _y2 - _y1;
@@ -48,8 +48,8 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     
     var _worldMatrix = matrix_get(matrix_world);
     
-    shader_set(__shdUgg);
-    shader_set_uniform_f(_shdUgg_u_vColor, color_get_red(  _color)/255,
+    shader_set(__shdUggVolume);
+    shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
                                            color_get_green(_color)/255,
                                            color_get_blue( _color)/255);
                                            

@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__UggPrebuildSphere",
+  "name": "UggGetWireframe",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "(System)",
-    "path": "folders/Ugg/(System).yy",
+    "name": "Ugg",
+    "path": "folders/Ugg.yy",
   },
 }

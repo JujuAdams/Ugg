@@ -1,9 +1,9 @@
 // Feather disable all
 
-function __UggPrebuildCone()
+function __UggPrebuildVolumeCone()
 {
 	var _vertexBuffer = vertex_create_buffer();
-	vertex_begin(_vertexBuffer, __Ugg().__vertexFormat);
+	vertex_begin(_vertexBuffer, __Ugg().__volumeVertexFormat);
     
     var _incr = 360 / UGG_CYLINDER_STEPS;
     var _angle = _incr/2;

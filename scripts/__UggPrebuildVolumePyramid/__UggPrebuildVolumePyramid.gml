@@ -1,9 +1,9 @@
 // Feather disable all
 
-function __UggPrebuildPyramid()
+function __UggPrebuildVolumePyramid()
 {
 	var _vertexBuffer = vertex_create_buffer();
-	vertex_begin(_vertexBuffer, __Ugg().__vertexFormat);
+	vertex_begin(_vertexBuffer, __Ugg().__volumeVertexFormat);
     
     //Wall
 	vertex_position_3d(_vertexBuffer,    0,    0, 1); vertex_normal(_vertexBuffer, 0, -0.44721360, 0.89442719);

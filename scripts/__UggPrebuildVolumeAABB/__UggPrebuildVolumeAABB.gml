@@ -7,10 +7,10 @@
 /// @param y2
 /// @param z2
 
-function __UggPrebuildAABB(_x1, _y1, _z1, _x2, _y2, _z2)
+function __UggPrebuildVolumeAABB(_x1, _y1, _z1, _x2, _y2, _z2)
 {
     var _vertexBuffer = vertex_create_buffer();
-    vertex_begin( _vertexBuffer, __Ugg().__vertexFormat);
+    vertex_begin( _vertexBuffer, __Ugg().__volumeVertexFormat);
     
     
     

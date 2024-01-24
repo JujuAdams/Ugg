@@ -1,7 +1,7 @@
 {
   "resourceType": "GMShader",
   "resourceVersion": "1.0",
-  "name": "__shdUgg",
+  "name": "__shdUggVolume",
   "type": 1,
   "parent": {
     "name": "(System)",

@@ -9,8 +9,8 @@
 
 function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_LINE_THICKNESS)
 {
-    static _ray = __Ugg().__line;
-    __UGG_COLOR_UNIFORM
+    static _ray = __Ugg().__volumeLine;
+    __UGG_COLOR_UNIFORMS
     
     var _dx = _x2 - _x1;
     var _dy = _y2 - _y1;
@@ -31,8 +31,8 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
         _matrix = matrix_multiply(_matrix, _worldMatrix);
     matrix_set(matrix_world, _matrix);
     
-    shader_set(__shdUgg);
-    shader_set_uniform_f(_shdUgg_u_vColor, color_get_red(  _color)/255,
+    shader_set(__shdUggVolume);
+    shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
                                            color_get_green(_color)/255,
                                            color_get_blue( _color)/255);
     vertex_submit(_ray, pr_trianglelist, -1);
