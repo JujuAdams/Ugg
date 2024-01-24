@@ -5,13 +5,13 @@ function __UggPrebuildWireframeCone()
 	var _vertexBuffer = vertex_create_buffer();
 	vertex_begin(_vertexBuffer, __Ugg().__wireframeVertexFormat);
     
-    var _incr = 360 / UGG_CYLINDER_STEPS;
+    var _incr = 360 / UGG_CONE_STEPS;
     var _angle = _incr/2;
     
 	var _bx = dcos(_angle);
 	var _by = dsin(_angle);
     
-    repeat(UGG_CYLINDER_STEPS)
+    repeat(UGG_CONE_STEPS)
     {
         _angle += _incr;
         var _cos = dcos(_angle);
