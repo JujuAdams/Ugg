@@ -22,15 +22,13 @@ function __UggPrebuildWireframeCone()
 	    var _bx = _cos;
 	    var _by = _sin;
         
-        //Bottom cap
-	    vertex_position_3d(_vertexBuffer,   0  , 0, 0); vertex_color(_vertexBuffer, c_white, 1);
-	    vertex_position_3d(_vertexBuffer, _bx, _by, 0); vertex_color(_vertexBuffer, c_white, 1);
+        //Cap
 	    vertex_position_3d(_vertexBuffer, _ax, _ay, 0); vertex_color(_vertexBuffer, c_white, 1);
+	    vertex_position_3d(_vertexBuffer, _bx, _by, 0); vertex_color(_vertexBuffer, c_white, 1);
         
-        //Wall
-	    vertex_position_3d(_vertexBuffer, _ax, _ay, 0); vertex_color(_vertexBuffer, c_white, 1);
-	    vertex_position_3d(_vertexBuffer, _bx, _by, 0); vertex_color(_vertexBuffer, c_white, 1);
+        //Slope
 	    vertex_position_3d(_vertexBuffer,   0,   0, 1); vertex_color(_vertexBuffer, c_white, 1);
+	    vertex_position_3d(_vertexBuffer, _ax, _ay, 0); vertex_color(_vertexBuffer, c_white, 1);
 	}
 
 	vertex_end(_vertexBuffer);

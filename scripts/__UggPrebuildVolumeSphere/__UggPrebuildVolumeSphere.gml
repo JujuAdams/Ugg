@@ -1,21 +1,21 @@
 // Feather disable all
 
-function __UggPrebuildVolumeSphere()
+function __UggPrebuildVolumeSphere(_steps)
 {
     var _vertexBuffer = vertex_create_buffer();
     vertex_begin(_vertexBuffer, __Ugg().__volumeVertexFormat);
     
-    var _rows = 0.5*UGG_SPHERE_STEPS + 0.5;
+    var _rows = 0.5*_steps + 0.5;
     
     // Create sin and cos tables
     var _cc;
     var _ss;
-    _cc[UGG_SPHERE_STEPS] = 0;
-    _ss[UGG_SPHERE_STEPS] = 0;
+    _cc[_steps] = 0;
+    _ss[_steps] = 0;
     
-    for( var _i = 0; _i <= UGG_SPHERE_STEPS; _i++)
+    for( var _i = 0; _i <= _steps; _i++)
     {
-        var _rad = _i*360/UGG_SPHERE_STEPS;
+        var _rad = _i*360/_steps;
         _cc[_i] = dcos(_rad);
         _ss[_i] = dsin(_rad);
     }
@@ -33,7 +33,7 @@ function __UggPrebuildVolumeSphere()
         var _this_a = [_rd1*_cc[_i], _rd1*_ss[_i], _rh1,    _rd1*_cc[_i], _rd1*_ss[_i], _rh1];
         var _this_b = [_rd2*_cc[_i], _rd2*_ss[_i], _rh2,    _rd2*_cc[_i], _rd2*_ss[_i], _rh2];
         
-        for( var _i = 1; _i <= UGG_SPHERE_STEPS; _i++ )
+        for( var _i = 1; _i <= _steps; _i++ )
         {
             var _prev_a = _this_a;
             var _prev_b = _this_b;
