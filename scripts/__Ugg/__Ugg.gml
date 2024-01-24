@@ -44,10 +44,10 @@ function __Ugg()
     
     _global.__wireframeSphere   = __UggPrebuildWireframeSphere();
     _global.__wireframeCylinder = __UggPrebuildWireframeCylinder();
-    //_global.__wireframeCone     = __UggPrebuildWireframeCone();
-    //_global.__wireframePyramid  = __UggPrebuildWireframePyramid();
-    //_global.__wireframeAABB     = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
-    //_global.__wireframeLine     = __UggPrebuildWireframeAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
+    _global.__wireframeCone     = __UggPrebuildWireframeCone();
+    _global.__wireframePyramid  = __UggPrebuildWireframePyramid();
+    _global.__wireframeAABB     = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
+    _global.__wireframeLine     = __UggPrebuildWireframeAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
     
     
     
