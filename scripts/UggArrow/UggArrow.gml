@@ -14,10 +14,10 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
-    static _volumeLine       = _global.__volumeLine;
-    static _volumePyramid    = _global.__volumePyramid;
-    static _wireframeLine    = _global.__wireframeLine;
-    static _wireframePyramid = _global.__wireframePyramid;
+    static _volumeLine            = _global.__volumeLine;
+    static _volumePyramid         = _global.__volumePyramid;
+    static _wireframePyramid      = _global.__wireframePyramid;
+    static _wireframeVertexFormat = _global.__wireframeVertexFormat;
     
     if (_arrowSize == undefined) _arrowSize = 4*_thickness;
     
@@ -50,12 +50,6 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     var _pAngle = point_direction(0, 0, _dx, _dy);
     
     var _worldMatrix = matrix_get(matrix_world);
-    
-    var _lineMatrix = matrix_build(0,0,0,   0,0,0,   _thickness, _thickness, _length);
-        _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
-        _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
-        _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(_x1, _y1, _z1,   0,0,0,   1,1,1));
-        _lineMatrix = matrix_multiply(_lineMatrix, _worldMatrix);
         
     var _pyramidMatrix = matrix_build(0,0,0,   0,0,0,   _arrowSize, _arrowSize, _arrowSize);
         _pyramidMatrix = matrix_multiply(_pyramidMatrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
@@ -70,14 +64,33 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
                                                         color_get_green(_color)/255,
                                                         color_get_blue( _color)/255);
         
-        matrix_set(matrix_world, _lineMatrix);
-        vertex_submit(_wireframeLine, pr_linelist, -1);
+    	var _vertexBuffer = vertex_create_buffer();
+    	vertex_begin(_vertexBuffer, _wireframeVertexFormat);
+        
+    	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_end(_vertexBuffer);
+        
+        shader_set(__shdUggWireframe);
+        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(  _color)/255,
+                                                        color_get_green(_color)/255,
+                                                        color_get_blue( _color)/255);
+        vertex_submit(_vertexBuffer, pr_linelist, -1);
+        
+        vertex_delete_buffer(_vertexBuffer);
         
         matrix_set(matrix_world, _pyramidMatrix);
         vertex_submit(_wireframePyramid, pr_linelist, -1);
     }
     else
     {
+        var _lineMatrix = matrix_build(0,0,0,   0,0,0,   _thickness, _thickness, _length);
+            _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
+            _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
+            _lineMatrix = matrix_multiply(_lineMatrix, matrix_build(_x1, _y1, _z1,   0,0,0,   1,1,1));
+            _lineMatrix = matrix_multiply(_lineMatrix, _worldMatrix);
+        
         shader_set(__shdUggVolume);
         shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
                                                      color_get_green(_color)/255,
