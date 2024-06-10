@@ -1,5 +1,6 @@
 //Toggle the info panel if we press F1
 if (keyboard_check_released(vk_f1)) showInfo = !showInfo;
+if (keyboard_check_released(vk_f2)) showDepth = !showDepth;
 
 //Lock the mouse if we left click
 if (mouse_check_button_released(mb_left))
@@ -59,4 +60,4 @@ camZ += 2*(keyboard_check(vk_space) - keyboard_check(vk_shift));
 view_matrix = matrix_build_lookat(camX, camY, camZ,
                                   camX+camDX, camY+camDY, camZ+camDZ,
                                   0, 0, 1);
-projection_matrix = matrix_build_projection_perspective_fov(90, room_width/room_height, 1, 3000);
+projection_matrix = matrix_build_projection_perspective_fov(90, room_width/room_height, 1, 1000);

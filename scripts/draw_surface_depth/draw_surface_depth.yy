@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"UggPyramid",
+  "%Name":"draw_surface_depth",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"UggPyramid",
+  "name":"draw_surface_depth",
   "parent":{
-    "name":"Ugg",
-    "path":"folders/Ugg.yy",
+    "name":"ugg",
+    "path":"ugg.yyp",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
