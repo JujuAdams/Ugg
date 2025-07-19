@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ClassCamera",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ClassCamera",
+  "parent":{
+    "name":"ugg",
+    "path":"ugg.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

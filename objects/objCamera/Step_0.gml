@@ -37,36 +37,15 @@ if (mouseLock)
     ++mouseLockTimer;
     if (mouseLockTimer > 4)
     {
-        
         var _dX = window_mouse_get_x() - _centreX;
         var _dY = window_mouse_get_y() - _centreY;
-        camYaw   -= 0.1*_dX;
-        camPitch -= 0.1*_dY;
-        
-        camPitch = clamp(camPitch, -89, 89); //Make sure we can't gimbal lock the camera
+        camera.Rotate(-0.1*_dX, -0.1*_dY);
     }
     
     //Now move the mouse
     window_mouse_set(_centreX, _centreY);
 }
 
-////Figure out where the camera is looking
-camDX =  dcos(camYaw)*dcos(camPitch);
-camDY = -dsin(camYaw)*dcos(camPitch);
-camDZ =  dsin(camPitch);
-
-//Move parallel/perpendicular to the camera
-var _para = 2*(keyboard_check(ord("W")) - keyboard_check(ord("S")));
-var _perp = 2*(keyboard_check(ord("A")) - keyboard_check(ord("D")));
-var _sin  = dsin(camYaw);
-var _cos  = dcos(camYaw);
-
-camX +=  _para*_cos - _perp*_sin;
-camY += -_para*_sin - _perp*_cos;
-camZ += 2*(keyboard_check(vk_space) - keyboard_check(vk_shift));
-
-//Calculate matrices that we'll want to use later
-viewMatrix = matrix_build_lookat(camX, camY, camZ,
-                                 camX+camDX, camY+camDY, camZ+camDZ,
-                                 0, 0, 1);
-projMatrix = matrix_build_projection_perspective_fov(90, room_width/room_height, zNear, zFar);
+camera.Move(2*(keyboard_check(ord("W")) - keyboard_check(ord("S"))),
+            2*(keyboard_check(ord("A")) - keyboard_check(ord("D"))),
+            2*(keyboard_check(vk_space) - keyboard_check(vk_shift)));

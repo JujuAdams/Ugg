@@ -2,19 +2,11 @@
 mouseLock      = false;
 mouseLockTimer = 0;
 
-zNear = 1;
-zFar  = 2_000;
-
-//Some variables to track the camera
-camX     = 450;
-camY     = 230;
-camZ     = 200;
-camYaw   = 120;
-camPitch = -45;
-camDX    =  dcos(camYaw)*dcos(camPitch);
-camDY    = -dsin(camYaw)*dcos(camPitch);
-camDZ    =  dsin(camPitch);
-
 //F1 toggles the info panel
 showInfo  = true;
 showDepth = false;
+
+camera = new ClassCamera()
+         .SetPosition(450, 230, 200)
+         .SetRotation(120, -45)
+         .SetPerspective(90, room_width/room_height, 1, 2_000);

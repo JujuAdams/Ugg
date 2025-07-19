@@ -25,6 +25,7 @@
     {"name":"__UggPrebuildWireframeCone","order":4,"path":"scripts/__UggPrebuildWireframeCone/__UggPrebuildWireframeCone.yy",},
     {"name":"__UggPrebuildWireframeCylinder","order":1,"path":"scripts/__UggPrebuildWireframeCylinder/__UggPrebuildWireframeCylinder.yy",},
     {"name":"__UggPrebuildWireframePyramid","order":3,"path":"scripts/__UggPrebuildWireframePyramid/__UggPrebuildWireframePyramid.yy",},
+    {"name":"ClassCamera","order":17,"path":"scripts/ClassCamera/ClassCamera.yy",},
     {"name":"draw_surface_depth","order":2,"path":"scripts/draw_surface_depth/draw_surface_depth.yy",},
     {"name":"UggAABB","order":7,"path":"scripts/UggAABB/UggAABB.yy",},
     {"name":"UggArrow","order":6,"path":"scripts/UggArrow/UggArrow.yy",},
