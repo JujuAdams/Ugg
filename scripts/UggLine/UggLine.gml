@@ -11,8 +11,9 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
 {
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
-    static _volumeLine = _global.__volumeLine;
+    static _volumeLine            = _global.__volumeLine;
     static _wireframeVertexFormat = _global.__wireframeVertexFormat;
+    static _staticMatrix          = matrix_build_identity();
     
     if (_global.__wireframe)
     {
@@ -41,24 +42,46 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
         var _length = sqrt(_dx*_dx + _dy*_dy + _dz*_dz);
         if (_length == 0) return false;
         
-        var _planeLength = sqrt(_dx*_dx + _dy*_dy);
-        var _zAngle = point_direction(0, 0, _planeLength, _dz);
-        var _pAngle = point_direction(0, 0, _dx, _dy);
+        if ((_dx == 0) && (_dy == 0) && (abs(_dz) == _length))
+        {
+            var _ix = 0;
+            var _iy = _thickness;
+            var _iz = 0;
+        }
+        else
+        {
+            var _ix = 0;
+            var _iy = 0;
+            var _iz = _thickness;
+        }
         
-        var _worldMatrix = matrix_get(matrix_world);
-        var _matrix = matrix_build(0,0,0,   0,0,0,   _thickness, _thickness, _length);
-            _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, -90 - _zAngle, 0,   1,1,1));
-            _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0, 0, _pAngle,   1,1,1));
-            _matrix = matrix_multiply(_matrix, matrix_build(_x1, _y1, _z1,   0,0,0,   1,1,1));
-            _matrix = matrix_multiply(_matrix, _worldMatrix);
-        matrix_set(matrix_world, _matrix);
+        _staticMatrix[@  0] = (_dz*_iy - _dy*_iz) / _length;
+        _staticMatrix[@  1] = (_dx*_iz - _dz*_ix) / _length;
+        _staticMatrix[@  2] = (_dy*_ix - _dx*_iy) / _length;
+        
+        _staticMatrix[@  4] = _ix;
+        _staticMatrix[@  5] = _iy;
+        _staticMatrix[@  6] = _iz;
+        
+        _staticMatrix[@  8] = _dx;
+        _staticMatrix[@  9] = _dy;
+        _staticMatrix[@ 10] = _dz;
+        
+        _staticMatrix[@ 12] = _x1;
+        _staticMatrix[@ 13] = _y1;
+        _staticMatrix[@ 14] = _z1;
+        
+        matrix_stack_push(_staticMatrix);
+        matrix_set(matrix_world, matrix_stack_top());
         
         shader_set(__shdUggVolume);
         shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
                                                      color_get_green(_color)/255,
                                                      color_get_blue( _color)/255);
         vertex_submit(_volumeLine, pr_trianglelist, -1);
-        matrix_set(matrix_world, _worldMatrix);
+        
+        matrix_stack_pop();
+        matrix_set(matrix_world, matrix_stack_top());
     }
     
     shader_reset();
