@@ -78,6 +78,8 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
                                                         color_get_green(_color)/255,
                                                         color_get_blue( _color)/255);
         
+        //TODO - Can we reuse the same vertex buffer here?
+        
     	var _vertexBuffer = vertex_create_buffer();
     	vertex_begin(_vertexBuffer, _wireframeVertexFormat);
     	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_color(_vertexBuffer, c_white, 1);

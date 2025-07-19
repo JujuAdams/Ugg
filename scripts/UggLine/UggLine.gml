@@ -17,6 +17,8 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
     
     if (_global.__wireframe)
     {
+        //TODO - Can we reuse the same vertex buffer here?
+        
     	var _vertexBuffer = vertex_create_buffer();
     	vertex_begin(_vertexBuffer, _wireframeVertexFormat);
         

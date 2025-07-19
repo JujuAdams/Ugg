@@ -8,11 +8,10 @@
 
 function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {
-    static _vertexFormat = __Ugg().__volumeVertexFormat;
+    __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
-    
-    var _vertexBuffer = vertex_create_buffer();
-    vertex_begin( _vertexBuffer, _vertexFormat);
+    static _vertexFormat = _global.__volumeVertexFormat;
+    static _wireframeVertexFormat = _global.__wireframeVertexFormat;
     
     //Ensure normalisation
     var _factor = 1 / sqrt(_normalX*_normalX + _normalY*_normalY + _normalZ*_normalZ);
@@ -79,22 +78,81 @@ function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT
     var _y4 = _y - _tangentY - _bitangentY;
     var _z4 = _z - _tangentZ - _bitangentZ;
     
-    vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
-    vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
-    vertex_position_3d(_vertexBuffer, _x4, _y4, _z4); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+    var _vertexBuffer = vertex_create_buffer();
     
-    vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
-    vertex_position_3d(_vertexBuffer, _x4, _y4, _z4); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
-    vertex_position_3d(_vertexBuffer, _x3, _y3, _z3); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+    if (_global.__wireframe)
+    {
+        //TODO - We don't need to regenerate this every time
+        
+    	vertex_begin(_vertexBuffer, _wireframeVertexFormat);
+        
+        //Edges
+    	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, _x4, _y4, _z4); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_position_3d(_vertexBuffer, _x4, _y4, _z4); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, _x3, _y3, _z3); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_position_3d(_vertexBuffer, _x3, _y3, _z3); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_color(_vertexBuffer, c_white, 1);
+        
+        //Cross
+    	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, _x4, _y4, _z4); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, _x3, _y3, _z3); vertex_color(_vertexBuffer, c_white, 1);
+        
+        //More crosses!
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x1 + _x2), 0.5*(_y1 + _y2), 0.5*(_z1 + _z2)); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x2 + _x4), 0.5*(_y2 + _y4), 0.5*(_z2 + _z4)); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x2 + _x4), 0.5*(_y2 + _y4), 0.5*(_z2 + _z4)); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x4 + _x3), 0.5*(_y4 + _y3), 0.5*(_z4 + _z3)); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x4 + _x3), 0.5*(_y4 + _y3), 0.5*(_z4 + _z3)); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x3 + _x1), 0.5*(_y3 + _y1), 0.5*(_z3 + _z1)); vertex_color(_vertexBuffer, c_white, 1);
+        
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x3 + _x1), 0.5*(_y3 + _y1), 0.5*(_z3 + _z1)); vertex_color(_vertexBuffer, c_white, 1);
+    	vertex_position_3d(_vertexBuffer, 0.5*(_x1 + _x2), 0.5*(_y1 + _y2), 0.5*(_z1 + _z2)); vertex_color(_vertexBuffer, c_white, 1);
+    }
+    else
+    {
+        //TODO - We don't need to regenerate this every time
+        
+        vertex_begin(_vertexBuffer, _vertexFormat);
+        
+        vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_vertexBuffer, _x4, _y4, _z4); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+        
+        vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_vertexBuffer, _x4, _y4, _z4); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_vertexBuffer, _x3, _y3, _z3); vertex_normal(_vertexBuffer, _normalX, _normalY, _normalZ);
+    }
     
     vertex_end(_vertexBuffer);
     
-    shader_set(__shdUggVolume);
-    shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
-                                                 color_get_green(_color)/255,
-                                                 color_get_blue( _color)/255);
-    vertex_submit(_vertexBuffer, pr_trianglelist, -1);
-    shader_reset();
+    if (_global.__wireframe)
+    {
+        shader_set(__shdUggWireframe);
+        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(  _color)/255,
+                                                        color_get_green(_color)/255,
+                                                        color_get_blue( _color)/255);
+        vertex_submit(_vertexBuffer, pr_linelist, -1);
+    }
+    else
+    {
+        shader_set(__shdUggVolume);
+        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
+                                                     color_get_green(_color)/255,
+                                                     color_get_blue( _color)/255);
+        vertex_submit(_vertexBuffer, pr_trianglelist, -1);
+    }
     
     vertex_delete_buffer(_vertexBuffer);
+    shader_reset();
 }
