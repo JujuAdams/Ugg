@@ -14,6 +14,90 @@ function ClassCamera() constructor
     zNear       = 1;
     zFar        = 16_000;
     
+    __mouseLock         = false;
+    __mouseLockTimer    = 0;
+    __mouseSensitivityX = 0.1;
+    __mouseSensitivityY = 0.1;
+    
+    with({})
+    {
+        __cameraWeakRef = weak_ref_create(other);
+        
+        __timeSource = time_source_create(time_source_global, 1, time_source_units_frames, function()
+        {
+            if (not weak_ref_alive(__cameraWeakRef))
+            {
+                time_source_destroy(__timeSource);
+                return;
+            }
+            
+            with(__cameraWeakRef.ref)
+            {
+                //If we've got the mouse locked...
+                if (__mouseLock)
+                {
+                    //Figure out where the centre of the window is
+                    var _centreX = window_get_width()/2;
+                    var _centreY = window_get_height()/2;
+                    
+                    //Increment a timer. Once that timer reaches 5, start pitching/panning the camera
+                    //There's a little bit of lag between pressing F3 and the mouse actually
+                    //centring in the window - this timer stops the camera freaking out!
+                    ++__mouseLockTimer;
+                    if (__mouseLockTimer > 4)
+                    {
+                        var _dX = window_mouse_get_x() - _centreX;
+                        var _dY = window_mouse_get_y() - _centreY;
+                        Rotate(-__mouseSensitivityX*_dX, -__mouseSensitivityY*_dY);
+                    }
+                    
+                    //Now move the mouse
+                    window_mouse_set(_centreX, _centreY);
+                }
+            }
+        },
+        [], -1);
+        
+        time_source_start(__timeSource);
+    }
+    
+    static SetMouseLock = function(_state)
+    {
+        if (__mouseLock != _state)
+        {
+            __mouseLock = _state;
+            __mouseLockTimer = 0;
+        }
+        
+        return self;
+    }
+    
+    static GetMouseLock = function()
+    {
+        return __mouseLock;
+    }
+    
+    static SetMouseSensitivity = function(_x, _y)
+    {
+        __mouseSensitivityX = sign(_x) * max(0.001, abs(_x));
+        __mouseSensitivityY = sign(_y) * max(0.001, abs(_y));
+        
+        return self;
+    }
+    
+    static GetMouseSensitivity = function()
+    {
+        static _result = {
+            x: 0,
+            y: 0,
+        };
+        
+        _result.x = __mouseSensitivityX;
+        _result.y = __mouseSensitivityY;
+        
+        return _result;
+    }
+    
     static SetPerspective = function(_fov, _aspect, _zNear, _zFar)
     {
         fieldOfView = _fov;
