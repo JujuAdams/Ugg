@@ -14,11 +14,7 @@ function UggAABB(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIFFUS
     __UGG_COLOR_UNIFORMS
     static _volumeAABB    = _global.__volumeAABB;
     static _wireframeAABB = _global.__wireframeAABB;
-    
-    static _staticMatrix = [1, 0, 0, 0,
-                            0, 1, 0, 0,
-                            0, 0, 1, 0,
-                            0, 0, 0, 1];
+    static _staticMatrix  = matrix_build_identity();
     
     _staticMatrix[@  0] = _xSize;
     _staticMatrix[@  5] = _ySize;

@@ -11,11 +11,7 @@ function UggCylinder(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_
     __UGG_COLOR_UNIFORMS
     static _volumeCylinder    = _global.__volumeCylinder;
     static _wireframeCylinder = _global.__wireframeCylinder;
-    
-    static _staticMatrix = [1, 0, 0, 0,
-                            0, 1, 0, 0,
-                            0, 0, 1, 0,
-                            0, 0, 0, 1];
+    static _staticMatrix      = matrix_build_identity();
     
     _staticMatrix[@  0] = _radius;
     _staticMatrix[@  5] = _radius;

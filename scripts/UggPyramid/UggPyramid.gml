@@ -10,13 +10,9 @@ function UggPyramid(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIF
 {
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
-    static _volumePyramid    = __Ugg().__volumePyramid;
-    static _wireframePyramid = __Ugg().__wireframePyramid;
-    
-    static _staticMatrix = [1, 0, 0, 0,
-                            0, 1, 0, 0,
-                            0, 0, 1, 0,
-                            0, 0, 0, 1];
+    static _volumePyramid    = _global.__volumePyramid;
+    static _wireframePyramid = _global.__wireframePyramid;
+    static _staticMatrix     = matrix_build_identity();
     
     _staticMatrix[@  0] = _xSize;
     _staticMatrix[@  5] = _ySize;

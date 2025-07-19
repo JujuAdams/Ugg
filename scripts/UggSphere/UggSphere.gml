@@ -10,11 +10,7 @@ function UggSphere(_x, _y, _z, _radius, _color = UGG_DEFAULT_DIFFUSE_COLOR)
     __UGG_COLOR_UNIFORMS
     static _volumeSphere    = _global.__volumeSphere;
     static _wireframeSphere = _global.__wireframeSphere;
-    
-    static _staticMatrix = [1, 0, 0, 0,
-                            0, 1, 0, 0,
-                            0, 0, 1, 0,
-                            0, 0, 0, 1];
+    static _staticMatrix    = matrix_build_identity();
     
     _staticMatrix[@  0] = _radius;
     _staticMatrix[@  5] = _radius;

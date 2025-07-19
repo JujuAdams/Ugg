@@ -9,13 +9,9 @@ function UggCone(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_COLO
 {
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
-    static _volumeCone    = __Ugg().__volumeCone;
-    static _wireframeCone = __Ugg().__wireframeCone;
-    
-    static _staticMatrix = [1, 0, 0, 0,
-                            0, 1, 0, 0,
-                            0, 0, 1, 0,
-                            0, 0, 0, 1];
+    static _volumeCone    = _global.__volumeCone;
+    static _wireframeCone = _global.__wireframeCone;
+    static _staticMatrix  = matrix_build_identity();
     
     _staticMatrix[@  0] = _radius;
     _staticMatrix[@  5] = _radius;
