@@ -42,30 +42,42 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
         var _length = sqrt(_dx*_dx + _dy*_dy + _dz*_dz);
         if (_length == 0) return false;
         
-        if ((_dx == 0) && (_dy == 0) && (abs(_dz) == _length))
+        _dx /= _length;
+        _dy /= _length;
+        _dz /= _length;
+        
+        if ((_dx == 0) && (_dy == 0) && (_dz == 1))
         {
-            var _ix = 0;
-            var _iy = _thickness;
-            var _iz = 0;
+            var _ux = 0;
+            var _uy = 1;
+            var _uz = 0;
         }
         else
         {
-            var _ix = 0;
-            var _iy = 0;
-            var _iz = _thickness;
+            var _ux = 0;
+            var _uy = 0;
+            var _uz = 1;
         }
         
-        _staticMatrix[@  0] = (_dz*_iy - _dy*_iz) / _length;
-        _staticMatrix[@  1] = (_dx*_iz - _dz*_ix) / _length;
-        _staticMatrix[@  2] = (_dy*_ix - _dx*_iy) / _length;
+        var _ix = _dz*_uy - _dy*_uz;
+        var _iy = _dx*_uz - _dz*_ux;
+        var _iz = _dy*_ux - _dx*_uy;
         
-        _staticMatrix[@  4] = _ix;
-        _staticMatrix[@  5] = _iy;
-        _staticMatrix[@  6] = _iz;
+        var _jx = _dz*_iy - _dy*_iz;
+        var _jy = _dx*_iz - _dz*_ix;
+        var _jz = _dy*_ix - _dx*_iy;
         
-        _staticMatrix[@  8] = _dx;
-        _staticMatrix[@  9] = _dy;
-        _staticMatrix[@ 10] = _dz;
+        _staticMatrix[@  0] = _jx*_thickness;
+        _staticMatrix[@  1] = _jy*_thickness;
+        _staticMatrix[@  2] = _jz*_thickness;
+        
+        _staticMatrix[@  4] = _ix*_thickness;
+        _staticMatrix[@  5] = _iy*_thickness;
+        _staticMatrix[@  6] = _iz*_thickness;
+        
+        _staticMatrix[@  8] = _dx*_length;
+        _staticMatrix[@  9] = _dy*_length;
+        _staticMatrix[@ 10] = _dz*_length;
         
         _staticMatrix[@ 12] = _x1;
         _staticMatrix[@ 13] = _y1;
