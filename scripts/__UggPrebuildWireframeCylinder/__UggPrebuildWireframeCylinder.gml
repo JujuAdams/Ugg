@@ -19,10 +19,10 @@ function __UggPrebuildWireframeCylinder()
 		_ss[_i] = dsin(_deg);
 	}
 
-	var _mx = 0.5*( _x2 + _x1 );
-	var _my = 0.5*( _y2 + _y1 );
-	var _rx = 0.5*( _x2 - _x1 );
-	var _ry = 0.5*( _y2 - _y1 );
+	var _mx = 0.5*(_x2 + _x1);
+	var _my = 0.5*(_y2 + _y1);
+	var _rx = 0.5*(_x2 - _x1);
+	var _ry = 0.5*(_y2 - _y1);
 
 	var _vertexBuffer = vertex_create_buffer();
 	vertex_begin(_vertexBuffer, __Ugg().__wireframeVertexFormat);
@@ -32,8 +32,6 @@ function __UggPrebuildWireframeCylinder()
     
 	for(var _i = 1; _i <= UGG_CYLINDER_STEPS; _i++)
 	{
-	    var _j = (_i+1) mod UGG_CYLINDER_STEPS;
-    
 	    var _ax = _bx;
 	    var _ay = _by;
 	    var _bx = _mx + _cc[_i]*_rx;

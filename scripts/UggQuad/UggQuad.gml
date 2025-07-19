@@ -77,8 +77,8 @@ function UggQuad(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_DEFAU
         
         shader_set(__shdUggVolume);
         shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
-                                               color_get_green(_color)/255,
-                                               color_get_blue( _color)/255);
+                                                     color_get_green(_color)/255,
+                                                     color_get_blue( _color)/255);
         vertex_submit(_vertexBuffer, pr_trianglelist, -1);
         shader_reset();
         

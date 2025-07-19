@@ -35,10 +35,9 @@ function __UggPrebuildWireframeSphere(_steps)
         var _this_a = [_rd1*_cc[_i], _rd1*_ss[_i], _rh1,    _rd1*_cc[_i], _rd1*_ss[_i], _rh1];
         var _this_b = [_rd2*_cc[_i], _rd2*_ss[_i], _rh2,    _rd2*_cc[_i], _rd2*_ss[_i], _rh2];
         
-        for( var _i = 1; _i <= _steps; _i++ )
+        for(var _i = 1; _i <= _steps; _i++ )
         {
             var _prev_a = _this_a;
-            var _prev_b = _this_b;
             
             var _this_a = [_rd1*_cc[_i], _rd1*_ss[_i], _rh1,    _rd1*_cc[_i], _rd1*_ss[_i], _rh1];
             var _this_b = [_rd2*_cc[_i], _rd2*_ss[_i], _rh2,    _rd2*_cc[_i], _rd2*_ss[_i], _rh2];

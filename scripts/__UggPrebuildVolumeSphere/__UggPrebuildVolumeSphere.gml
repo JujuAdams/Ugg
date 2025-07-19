@@ -13,7 +13,7 @@ function __UggPrebuildVolumeSphere(_steps)
     _cc[_steps] = 0;
     _ss[_steps] = 0;
     
-    for( var _i = 0; _i <= _steps; _i++)
+    for(var _i = 0; _i <= _steps; _i++)
     {
         var _rad = _i*360/_steps;
         _cc[_i] = dcos(_rad);
