@@ -4,10 +4,10 @@ function __UggPrebuildVolumeCylinder()
 {
     var _x1 = -1;
     var _y1 = -1;
-    var _z1 = -0.5;
+    var _z1 = 0;
     var _x2 = 1;
     var _y2 = 1;
-    var _z2 = 0.5;
+    var _z2 = 1;
     
 	var _cc = array_create(UGG_CYLINDER_STEPS, 0);
 	var _ss = array_create(UGG_CYLINDER_STEPS, 0);
@@ -19,10 +19,10 @@ function __UggPrebuildVolumeCylinder()
 		_ss[_i] = dsin(_deg);
 	}
 
-	var _mx = 0.5*( _x2 + _x1 );
-	var _my = 0.5*( _y2 + _y1 );
-	var _rx = 0.5*( _x2 - _x1 );
-	var _ry = 0.5*( _y2 - _y1 );
+	var _mx = 0.5*(_x2 + _x1);
+	var _my = 0.5*(_y2 + _y1);
+	var _rx = 0.5*(_x2 - _x1);
+	var _ry = 0.5*(_y2 - _y1);
 
 	var _vertexBuffer = vertex_create_buffer();
 	vertex_begin(_vertexBuffer, __Ugg().__volumeVertexFormat);

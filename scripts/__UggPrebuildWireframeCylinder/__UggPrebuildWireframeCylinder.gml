@@ -4,10 +4,10 @@ function __UggPrebuildWireframeCylinder()
 {
     var _x1 = -1;
     var _y1 = -1;
-    var _z1 = -0.5;
+    var _z1 =  0;
     var _x2 = 1;
     var _y2 = 1;
-    var _z2 = 0.5;
+    var _z2 = 1;
     
 	var _cc = array_create(UGG_CYLINDER_STEPS, 0);
 	var _ss = array_create(UGG_CYLINDER_STEPS, 0);
