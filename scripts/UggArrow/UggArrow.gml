@@ -10,8 +10,6 @@
 
 function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_LINE_THICKNESS)
 {
-    //TODO - Optimise
-    
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
     static _volumeLine            = _global.__volumeLine;

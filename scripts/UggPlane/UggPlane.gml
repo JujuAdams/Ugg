@@ -11,8 +11,6 @@ function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT
     static _vertexFormat = __Ugg().__volumeVertexFormat;
     __UGG_COLOR_UNIFORMS
     
-    //TODO - Optimise this and draw it relative to the camera's position
-    
     var _vertexBuffer = vertex_create_buffer();
     vertex_begin( _vertexBuffer, _vertexFormat);
     
@@ -26,7 +24,7 @@ function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT
     {
         //tangent = cross(normal, [0, 0, 1])
         var _tangentX = -_normalY;
-        var _tangentY = _normalX;
+        var _tangentY =  _normalX;
         var _tangentZ = 0;
     }
     else
@@ -34,7 +32,7 @@ function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT
         //tangent = cross(normal, [1, 0, 0])
         var _tangentX = 0;
         var _tangentY = -_normalZ;
-        var _tangentZ = _normalY;
+        var _tangentZ =  _normalY;
     }
     
     //bitangent = cross(normal, tangent)
@@ -49,6 +47,21 @@ function UggPlane(_x, _y, _z, _normalX, _normalY, _normalZ, _color = UGG_DEFAULT
     _bitangentX *= UGG_PLANE_SIZE;
     _bitangentY *= UGG_PLANE_SIZE;
     _bitangentZ *= UGG_PLANE_SIZE;
+    
+    var _viewMatrix = matrix_get(matrix_view);
+    var _invViewMatrix = __UggMatrixInvert(_viewMatrix);
+    
+    var _camX = _invViewMatrix[12];
+    var _camY = _invViewMatrix[13];
+    var _camZ = _invViewMatrix[14];
+    
+    var _distToCamera = dot_product_3d(_normalX, _normalY, _normalZ, _camX, _camY, _camZ);
+    var _distToPlane  = dot_product_3d(_normalX, _normalY, _normalZ, _x, _y, _z);
+    var _normalDistToPlane = _distToCamera - _distToPlane;
+    
+    _x = _camX - _normalDistToPlane*_normalX;
+    _y = _camY - _normalDistToPlane*_normalY;
+    _z = _camZ - _normalDistToPlane*_normalZ;
     
     var _x1 = _x + _tangentX + _bitangentX;
     var _y1 = _y + _tangentY + _bitangentY;
