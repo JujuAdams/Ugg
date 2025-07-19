@@ -1,6 +1,8 @@
-//Toggle the info panel if we press F1
+//Various toggles on the function keys
 if (keyboard_check_released(vk_f1)) showInfo = !showInfo;
 if (keyboard_check_released(vk_f2)) showDepth = !showDepth;
+if (keyboard_check_released(vk_f3)) UggSetWireframe(not UggGetWireframe());
+if (keyboard_check_released(vk_f4)) window_set_fullscreen(!window_get_fullscreen());
 
 //Lock the mouse if we left click
 if (mouse_check_button_released(mb_left))
@@ -12,8 +14,15 @@ if (mouse_check_button_released(mb_left))
     window_set_cursor(mouseLock? cr_none : cr_default);
 }
 
-//Toggle the fullscreen if we press f4
-if (keyboard_check_released(vk_f4)) window_set_fullscreen(!window_get_fullscreen());
+//Always unlock the mouse if we press escape
+if (mouseLock && keyboard_check_pressed(vk_escape))
+{
+    mouseLock = false;
+    mouseLockTimer = 0;
+    
+    //Hide the mouse if we're locked
+    window_set_cursor(cr_default);
+}
 
 //If we've got the mouse locked...
 if (mouseLock)
@@ -57,7 +66,7 @@ camY += -_para*_sin - _perp*_cos;
 camZ += 2*(keyboard_check(vk_space) - keyboard_check(vk_shift));
 
 //Calculate matrices that we'll want to use later
-view_matrix = matrix_build_lookat(camX, camY, camZ,
-                                  camX+camDX, camY+camDY, camZ+camDZ,
-                                  0, 0, 1);
-projection_matrix = matrix_build_projection_perspective_fov(90, room_width/room_height, 1, 1000);
+viewMatrix = matrix_build_lookat(camX, camY, camZ,
+                                 camX+camDX, camY+camDY, camZ+camDZ,
+                                 0, 0, 1);
+projMatrix = matrix_build_projection_perspective_fov(90, room_width/room_height, zNear, zFar);

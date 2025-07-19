@@ -1,6 +1,9 @@
 //Mouse lock variables (press F3 to lock the mouse and use mouselook)
-mouseLock = false;
+mouseLock      = false;
 mouseLockTimer = 0;
+
+zNear = 1;
+zFar  = 2_000;
 
 //Some variables to track the camera
 camX     = 450;
@@ -13,5 +16,5 @@ camDY    = -dsin(camYaw)*dcos(camPitch);
 camDZ    =  dsin(camPitch);
 
 //F1 toggles the info panel
-showInfo = true;
+showInfo  = true;
 showDepth = false;

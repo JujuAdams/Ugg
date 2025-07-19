@@ -10,6 +10,7 @@ if (showInfo)
         _string += "Left click to toggle mouselook\n";
         _string += "F1 to toggle this panel\n";
         _string += "F2 to toggle depth map\n";
+        _string += "F3 to toggle wireframe mode\n";
         _string += "F4 to toggle fullscreen";
     
     draw_set_colour(c_black);
