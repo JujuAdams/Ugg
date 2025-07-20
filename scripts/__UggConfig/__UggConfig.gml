@@ -5,7 +5,7 @@
 #macro UGG_CYLINDER_STEPS  24
 #macro UGG_CONE_STEPS      24
 #macro UGG_LINE_THICKNESS   2
-#macro UGG_PLANE_SIZE      1_000
+#macro UGG_PLANE_SIZE      10_000
 
 #macro UGG_DEFAULT_DIFFUSE_COLOR  c_white
 #macro UGG_AMBIENT_LIGHT_COLOR    c_gray

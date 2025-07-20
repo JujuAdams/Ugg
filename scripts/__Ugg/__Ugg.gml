@@ -40,6 +40,7 @@ function __Ugg()
     _global.__volumePyramid  = __UggPrebuildVolumePyramid();
     _global.__volumeAABB     = __UggPrebuildVolumeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
     _global.__volumeLine     = __UggPrebuildVolumeAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
+    _global.__volumePlane    = __UggPrebuildVolumePlane(UGG_PLANE_SIZE);
     
     
     
@@ -49,6 +50,7 @@ function __Ugg()
     _global.__wireframeCone     = __UggPrebuildWireframeCone();
     _global.__wireframePyramid  = __UggPrebuildWireframePyramid();
     _global.__wireframeAABB     = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
+    _global.__wireframePlane    = __UggPrebuildWireframePlane(UGG_PLANE_SIZE, 8);
     
     
     
