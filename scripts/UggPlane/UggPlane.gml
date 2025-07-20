@@ -89,12 +89,17 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR)
     }
     else
     {
+        var _oldCullmode = gpu_get_cullmode();
+        gpu_set_cullmode(cull_noculling);
+        
         shader_set(__shdUggVolume);
         shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color)/255,
                                                      color_get_green(_color)/255,
                                                      color_get_blue( _color)/255);
         vertex_submit(_volumePlane, pr_trianglelist, -1);
         shader_reset();
+        
+        gpu_set_cullmode(_oldCullmode);
     }
     
     matrix_stack_pop();
