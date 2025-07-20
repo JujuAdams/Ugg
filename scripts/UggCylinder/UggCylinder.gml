@@ -1,3 +1,7 @@
+// Feather disable all
+
+/// Draws a cylinder. The `x` `y` `z` parameters define the centre of the base of the cylinder.
+/// 
 /// @param x
 /// @param y
 /// @param z

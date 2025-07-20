@@ -1,3 +1,7 @@
+// Feather disable all
+
+/// Draws a line between two coordinates.
+/// 
 /// @param x1
 /// @param y1
 /// @param z1

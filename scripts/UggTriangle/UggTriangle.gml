@@ -1,3 +1,8 @@
+// Feather disable all
+
+/// Draws a triangle stretched over three coordinates. This function presumes a clockwise winding
+/// order.
+/// 
 /// @param x1
 /// @param y1
 /// @param z1

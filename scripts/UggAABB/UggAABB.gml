@@ -1,12 +1,14 @@
-/// Draws an axis-aligned bounding box
+// Feather disable all
+
+/// Draws an axis-aligned bounding box.
 /// 
-/// @param  xCentre   x-coordinate of the centre of the AABB
-/// @param  yCentre   y-coordinate of the centre of the AABB
-/// @param  zCentre   z-coordinate of the centre of the AABB
-/// @param  xSize     Size of the AABB in the x-axis
-/// @param  ySize     Size of the AABB in the y-axis
-/// @param  zSize     Size of the AABB in the z-axis
-/// @param  [color]   Colour of the AABB (standard GameMaker 24-integer)
+/// @param  xCentre
+/// @param  yCentre
+/// @param  zCentre
+/// @param  xSize
+/// @param  ySize
+/// @param  zSize
+/// @param  [color]
 
 function UggAABB(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIFFUSE_COLOR)
 {

@@ -1,3 +1,7 @@
+// Feather disable all
+
+/// Draws an infinite plane. The plane will follow the camera.
+/// 
 /// @param x
 /// @param y
 /// @param z

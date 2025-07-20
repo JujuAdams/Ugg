@@ -1,3 +1,8 @@
+// Feather disable all
+
+/// Draws a quad stretched over three coordinates with the fourth coordinate being calculated
+/// implicitly. This function presumes a clockwise winding order.
+/// 
 /// @param x1
 /// @param y1
 /// @param z1

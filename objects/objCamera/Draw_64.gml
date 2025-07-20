@@ -1,7 +1,7 @@
 if (showInfo)
 {
-    var _string  = "Ugg " + __UGG_VERSION + "\n";
-        _string += "Juju Adams " + __UGG_DATE + "\n";
+    var _string  = "Ugg " + UGG_VERSION + "\n";
+        _string += "Juju Adams " + UGG_DATE + "\n";
         _string += "\n";
         _string += "camera position = " + string(camera.x) + ", " + string(camera.y) + ", " + string(camera.z) + "\n";
         _string += "camera yaw/pitch = " + string(camera.yaw) + ", " + string(camera.pitch) + "\n";

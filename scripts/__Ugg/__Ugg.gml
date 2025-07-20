@@ -1,5 +1,4 @@
-#macro  __UGG_VERSION  "1.0.0"
-#macro  __UGG_DATE     "2024-06-14"
+
 
 #macro __UGG_GLOBAL  static _global = __Ugg();
 #macro __UGG_COLOR_UNIFORMS  static _shdUggVolume_u_vColor    = shader_get_uniform(__shdUggVolume, "u_vColor");\
@@ -15,11 +14,11 @@ function __Ugg()
     if (_global != undefined) return _global;
     _global = {};
     
-    show_debug_message("Welcome to Ugg by Juju Adams! This is version " + __UGG_VERSION + " " + __UGG_DATE);
+    show_debug_message($"Welcome to Ugg by Juju Adams! This is version {UGG_VERSION}, {UGG_DATE}");
     
     
     
-    _global.__wireframe = UGG_START_WIREFRAME;
+    _global.__wireframe = false;
     
     vertex_format_begin();
     vertex_format_add_position_3d();

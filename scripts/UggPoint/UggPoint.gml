@@ -1,3 +1,8 @@
+// Feather disable all
+
+/// Draws a small point at the given coordinates. The size of the point is given by the
+/// `UGG_POINT_RADIUS` macro.
+/// 
 /// @param x
 /// @param y
 /// @param z

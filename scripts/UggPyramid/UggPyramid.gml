@@ -1,3 +1,8 @@
+// Feather disable all
+
+/// Draws a rectangle-based pyramid. The `x` `y` `z` parameters define the centre of the base of
+/// the pyramid.
+/// 
 /// @param x
 /// @param y
 /// @param z

@@ -1,3 +1,7 @@
+// Feather disable all
+
+/// Draws a cone. The `x` `y` `z` parameters define the centre of the base of the cone.
+/// 
 /// @param x
 /// @param y
 /// @param z
