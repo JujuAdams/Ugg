@@ -6,7 +6,7 @@
 
 &nbsp;
 
-Volumetric and wireframe modes available for all shapes. Normals are correct for all shapes, and Ugg has some basic native lighting to aid with reading the scene. Ugg uses positive z up (cones etc. point towards positive z).
+Volumetric and wireframe modes available for all shapes. Shapes can be coloured individually and are untextured. Normals are correct for all shapes, and Ugg has some basic native lighting to aid with reading the scene. Ugg uses positive z up (cones etc. point towards positive z).
 
 Shapes included are:
 
