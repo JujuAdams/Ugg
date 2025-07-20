@@ -18,6 +18,7 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     static _wireframeVertexFormat = _global.__wireframeVertexFormat;
     static _vectorMatrix          = matrix_build_identity();
     static _workMatrix            = matrix_build_identity();
+    static _staticVBuff           = vertex_create_buffer();
     
     if (_arrowSize == undefined) _arrowSize = 4*_thickness;
     
@@ -31,6 +32,8 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     _dx /= _length;
     _dy /= _length;
     _dz /= _length;
+    
+    //TODO - Optimize
     
     if ((_dx == 0) && (_dy == 0) && (_dz == 1))
     {
@@ -78,16 +81,12 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
                                                         color_get_green(_color)/255,
                                                         color_get_blue( _color)/255);
         
-        //TODO - Can we reuse the same vertex buffer here?
+    	vertex_begin(_staticVBuff, _wireframeVertexFormat);
+    	vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
+    	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
+    	vertex_end(_staticVBuff);
         
-    	var _vertexBuffer = vertex_create_buffer();
-    	vertex_begin(_vertexBuffer, _wireframeVertexFormat);
-    	vertex_position_3d(_vertexBuffer, _x1, _y1, _z1); vertex_color(_vertexBuffer, c_white, 1);
-    	vertex_position_3d(_vertexBuffer, _x2, _y2, _z2); vertex_color(_vertexBuffer, c_white, 1);
-    	vertex_end(_vertexBuffer);
-        
-        vertex_submit(_vertexBuffer, pr_linelist, -1);
-        vertex_delete_buffer(_vertexBuffer);
+        vertex_submit(_staticVBuff, pr_linelist, -1);
     }
     else
     {
