@@ -35,7 +35,7 @@ function __Ugg()
     _global.__volumeSphere      = __UggPrebuildVolumeSphere(UGG_SPHERE_STEPS);
     _global.__volumePoint       = __UggPrebuildVolumeSphere(2);
     _global.__volumeCylinder    = __UggPrebuildVolumeCylinder(UGG_CYLINDER_STEPS);
-    _global.__volumeCone        = __UggPrebuildVolumeCone();
+    _global.__volumeCone        = __UggPrebuildVolumeCone(UGG_CONE_STEPS);
     _global.__volumePyramid     = __UggPrebuildVolumePyramid();
     _global.__volumeAABB        = __UggPrebuildVolumeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
     _global.__volumeLine        = __UggPrebuildVolumeAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
@@ -49,7 +49,7 @@ function __Ugg()
     _global.__wireframeSphere      = __UggPrebuildWireframeSphere(UGG_SPHERE_STEPS);
     _global.__wireframePoint       = __UggPrebuildWireframeSphere(2);
     _global.__wireframeCylinder    = __UggPrebuildWireframeCylinder(UGG_CYLINDER_STEPS);
-    _global.__wireframeCone        = __UggPrebuildWireframeCone();
+    _global.__wireframeCone        = __UggPrebuildWireframeCone(UGG_CONE_STEPS);
     _global.__wireframePyramid     = __UggPrebuildWireframePyramid();
     _global.__wireframeAABB        = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
     _global.__wireframePlane       = __UggPrebuildWireframePlane(UGG_PLANE_SIZE, 8);
