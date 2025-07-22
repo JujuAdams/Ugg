@@ -15,10 +15,12 @@ Shapes included are:
 - Point
 - Sphere
 - Axis-aligned bounding box
+- Rotated box
 - Infinite plane
 - Triangle
 - Quad
 - Cylinder
+- Capsule
 - Pyramid
 - Cone
 - Frustrum
