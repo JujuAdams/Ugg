@@ -1,4 +1,4 @@
-<h1 align="center">Ugg</h1>
+<h1 align="center">Ugg 2.2.0</h1>
 
 <p align="center">3D primitives for GameMaker</p>
 
@@ -18,6 +18,7 @@ Shapes included are:
 - Rotated box
 - Infinite plane
 - Triangle
+- Circle (planar)
 - Quad
 - Cylinder
 - Capsule
