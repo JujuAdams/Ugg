@@ -71,6 +71,7 @@
     {"id":{"name":"UggCapsule","path":"scripts/UggCapsule/UggCapsule.yy",},},
     {"id":{"name":"UggCircle","path":"scripts/UggCircle/UggCircle.yy",},},
     {"id":{"name":"UggCone","path":"scripts/UggCone/UggCone.yy",},},
+    {"id":{"name":"UggCross","path":"scripts/UggCross/UggCross.yy",},},
     {"id":{"name":"UggCylinder","path":"scripts/UggCylinder/UggCylinder.yy",},},
     {"id":{"name":"UggFrustrum","path":"scripts/UggFrustrum/UggFrustrum.yy",},},
     {"id":{"name":"UggGetWireframe","path":"scripts/UggGetWireframe/UggGetWireframe.yy",},},
