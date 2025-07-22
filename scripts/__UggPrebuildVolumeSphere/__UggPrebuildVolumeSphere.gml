@@ -13,12 +13,12 @@ function __UggPrebuildVolumeSphere(_steps)
     var _y2 = 0;
     
     var _i = 1;
-    repeat(_steps)
+    repeat(_steps+1)
     {
         var _x1 = _x2;
         var _y1 = _y2;
         
-        var _theta = 360*(_i / _steps);
+        var _theta = 360*(_i / (_steps+1));
         _x2 =  _length*dcos(_theta);
         _y2 = -_length*dsin(_theta);
         
@@ -53,14 +53,14 @@ function __UggPrebuildVolumeSphere(_steps)
         var _y2B = 0;
         
         var _i = 1;
-        repeat(_steps)
+        repeat(_steps+1)
         {
             var _x1A = _x2A;
             var _y1A = _y2A;
             var _x1B = _x2B;
             var _y1B = _y2B;
             
-            var _theta = 360*(_i / _steps);
+            var _theta = 360*(_i / (_steps+1));
             var _cos = dcos(_theta);
             var _sin = dsin(_theta);
             _x2A =  _lengthA*_cos;
@@ -81,6 +81,7 @@ function __UggPrebuildVolumeSphere(_steps)
         
         ++_j;
     }
+    
     vertex_end(_vertexBuffer);
 	vertex_freeze(_vertexBuffer);
     
