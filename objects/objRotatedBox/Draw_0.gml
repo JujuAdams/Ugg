@@ -1,0 +1,1 @@
+UggRotatedBox(x, y, 0,   50, 10, 70,   current_time/20);
