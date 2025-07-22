@@ -40,6 +40,7 @@ function __Ugg()
     _global.__volumeAABB        = __UggPrebuildVolumeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
     _global.__volumeLine        = __UggPrebuildVolumeAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
     _global.__volumePlane       = __UggPrebuildVolumePlane(UGG_PLANE_SIZE);
+    _global.__volumeCircle      = __UggPrebuildVolumeCircle(UGG_CIRCLE_STEPS);
     _global.__volumeCapsuleCap  = __UggPrebuildVolumeCapsuleCap(UGG_CAPSULE_STEPS);
     _global.__volumeCapsuleBody = __UggPrebuildVolumeCapsuleBody(UGG_CAPSULE_STEPS);
     
@@ -52,6 +53,7 @@ function __Ugg()
     _global.__wireframePyramid     = __UggPrebuildWireframePyramid();
     _global.__wireframeAABB        = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
     _global.__wireframePlane       = __UggPrebuildWireframePlane(UGG_PLANE_SIZE, 8);
+    _global.__wireframeCircle      = __UggPrebuildWireframeCircle(UGG_CIRCLE_STEPS);
     _global.__wireframeCapsuleCap  = __UggPrebuildWireframeCapsuleCap(UGG_CAPSULE_STEPS);
     _global.__wireframeCapsuleBody = __UggPrebuildWireframeCapsuleBody(UGG_CAPSULE_STEPS);
     

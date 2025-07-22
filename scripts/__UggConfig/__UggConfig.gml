@@ -9,6 +9,7 @@
 #macro UGG_CYLINDER_STEPS  24
 #macro UGG_CONE_STEPS      24
 #macro UGG_CAPSULE_STEPS   12
+#macro UGG_CIRCLE_STEPS    24
 
 //Size of `UggPlane()`. Planes will follow the camera; this value will usually want to be equal to
 //your projection's z-far.
