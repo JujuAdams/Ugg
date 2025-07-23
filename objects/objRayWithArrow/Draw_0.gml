@@ -1,0 +1,1 @@
+UggRayWithArrow(x, y, 0, 40, 40, 40);

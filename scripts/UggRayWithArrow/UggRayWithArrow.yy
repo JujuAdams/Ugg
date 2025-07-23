@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"UggRayWithArrow",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"UggRayWithArrow",
+  "parent":{
+    "name":"Ugg",
+    "path":"folders/Ugg.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
