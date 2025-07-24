@@ -111,9 +111,9 @@ function __Ugg()
         __wireframeCone        = __UggPrebuildWireframeCone(UGG_CONE_STEPS, 8);
         __wireframeCylinder    = __UggPrebuildWireframeCylinder(UGG_CYLINDER_STEPS, 8);
         __wireframePlane       = __UggPrebuildWireframePlane(UGG_PLANE_SIZE, 8);
-        __wireframePoint       = __UggPrebuildWireframeSphere(2);
+        __wireframePoint       = __UggPrebuildWireframeSphere(4, 4, 1, 1);
         __wireframePyramid     = __UggPrebuildWireframePyramid();
-        __wireframeSphere      = __UggPrebuildWireframeSphere(UGG_SPHERE_STEPS);
+        __wireframeSphere      = __UggPrebuildWireframeSphere(UGG_SPHERE_STEPS, 6, 1, 3);
     }
     
     shader_set(__shdUggVolume);
