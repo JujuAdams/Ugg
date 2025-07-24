@@ -84,10 +84,10 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     
     if (_wireframe)
     {
-    	vertex_begin(_staticVBuff, _wireframeVertexFormat);
-    	vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_end(_staticVBuff);
+        vertex_begin(_staticVBuff, _wireframeVertexFormat);
+        vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
+        vertex_end(_staticVBuff);
         
         __UGG_WIREFRAME_SHADER
         vertex_submit(_staticVBuff, pr_linelist, -1);

@@ -85,7 +85,7 @@ function __UggPrebuildWireframeCapsuleCap(_steps)
     }
     
     vertex_end(_vertexBuffer);
-	vertex_freeze(_vertexBuffer);
+    vertex_freeze(_vertexBuffer);
     
     return _vertexBuffer;
 }

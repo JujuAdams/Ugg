@@ -29,16 +29,16 @@ function UggQuad(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_DEFAU
         var _y4 = _y2 + _y3 - _y1;
         var _z4 = _z2 + _z3 - _z1;
         
-    	vertex_begin(_staticVBuff, _wireframeVertexFormat);
-    	vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x4, _y4, _z4); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x4, _y4, _z4); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
-    	vertex_end(_staticVBuff);
+        vertex_begin(_staticVBuff, _wireframeVertexFormat);
+        vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x4, _y4, _z4); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x4, _y4, _z4); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_color(_staticVBuff, c_white, 1);
+        vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
+        vertex_end(_staticVBuff);
         
         __UGG_WIREFRAME_SHADER
         vertex_submit(_staticVBuff, pr_linelist, -1);
@@ -63,15 +63,15 @@ function UggQuad(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_DEFAU
         var _y4 = _y2 + _dy13;
         var _z4 = _z2 + _dz13;
         
-    	vertex_begin(_staticVBuff, _volumeVertexFormat);
-    	vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-    	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-    	vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+        vertex_begin(_staticVBuff, _volumeVertexFormat);
+        vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
         
-    	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-    	vertex_position_3d(_staticVBuff, _x4, _y4, _z4); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-    	vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-    	vertex_end(_staticVBuff);
+        vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_staticVBuff, _x4, _y4, _z4); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+        vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+        vertex_end(_staticVBuff);
         
         __UGG_VOLUME_SHADER
         vertex_submit(_staticVBuff, pr_trianglelist, -1);

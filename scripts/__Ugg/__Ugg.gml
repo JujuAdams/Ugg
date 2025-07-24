@@ -4,13 +4,22 @@
 #macro __UGG_COLOR_UNIFORMS  static _shdUggVolume_u_vColor    = shader_get_uniform(__shdUggVolume, "u_vColor");\
                              static _shdUggWireframe_u_vColor = shader_get_uniform(__shdUggWireframe, "u_vColor");
 
-#macro __UGG_WIREFRAME_SHADER  shader_set(__shdUggWireframe);\
-                               shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+#macro __UGG_WIREFRAME_SHADER  if (UGG_ENABLE_SHADER)\
+                               {\
+                                   shader_set(__shdUggWireframe);\
+                                   shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));\
+                               }
 
-#macro __UGG_VOLUME_SHADER  shader_set(__shdUggVolume);\
-                            shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+#macro __UGG_VOLUME_SHADER  if (UGG_ENABLE_SHADER)\
+                            {\
+                                shader_set(__shdUggVolume);\
+                                shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));\
+                            }
 
-#macro __UGG_RESET_SHADER  shader_reset();
+#macro __UGG_RESET_SHADER  if (UGG_ENABLE_SHADER)\
+                           {\
+                               shader_reset();\
+                           }
 
 __Ugg();
 
@@ -18,52 +27,77 @@ function __Ugg()
 {
     static _global = undefined;
     if (_global != undefined) return _global;
+    
     _global = {};
+    with(_global)
+    {
+        show_debug_message($"Welcome to Ugg by Juju Adams! This is version {UGG_VERSION}, {UGG_DATE}");
+        __wireframe = false;
+        
+        vertex_format_begin();
+        vertex_format_add_position_3d();
+        vertex_format_add_normal();
+        vertex_format_add_color();
+        vertex_format_add_texcoord();
+        __nativeVertexFormat = vertex_format_end();
+        
+        vertex_format_begin();
+        vertex_format_add_position_3d();
+        vertex_format_add_normal();
+        __volumeVertexFormat = vertex_format_end();
+        
+        vertex_format_begin();
+        vertex_format_add_position_3d();
+        vertex_format_add_color();
+        __wireframeVertexFormat = vertex_format_end();
     
-    show_debug_message($"Welcome to Ugg by Juju Adams! This is version {UGG_VERSION}, {UGG_DATE}");
-    
-    
-    
-    _global.__wireframe = false;
-    
-    vertex_format_begin();
-    vertex_format_add_position_3d();
-    vertex_format_add_normal();
-    _global.__volumeVertexFormat = vertex_format_end();
-    
-    vertex_format_begin();
-    vertex_format_add_position_3d();
-    vertex_format_add_color();
-    _global.__wireframeVertexFormat = vertex_format_end();
-    
-    
-    
-    _global.__volumeSphere      = __UggPrebuildVolumeSphere(UGG_SPHERE_STEPS);
-    _global.__volumePoint       = __UggPrebuildVolumeSphere(2);
-    _global.__volumeCylinder    = __UggPrebuildVolumeCylinder(UGG_CYLINDER_STEPS);
-    _global.__volumeCone        = __UggPrebuildVolumeCone(UGG_CONE_STEPS);
-    _global.__volumePyramid     = __UggPrebuildVolumePyramid();
-    _global.__volumeAABB        = __UggPrebuildVolumeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
-    _global.__volumeLine        = __UggPrebuildVolumeAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
-    _global.__volumePlane       = __UggPrebuildVolumePlane(UGG_PLANE_SIZE);
-    _global.__volumeCircle      = __UggPrebuildVolumeCircle(UGG_CIRCLE_STEPS);
-    _global.__volumeCapsuleCap  = __UggPrebuildVolumeCapsuleCap(UGG_CAPSULE_STEPS);
-    _global.__volumeCapsuleBody = __UggPrebuildVolumeCapsuleBody(UGG_CAPSULE_STEPS);
-    
-    
-    
-    _global.__wireframeSphere      = __UggPrebuildWireframeSphere(UGG_SPHERE_STEPS);
-    _global.__wireframePoint       = __UggPrebuildWireframeSphere(2);
-    _global.__wireframeCylinder    = __UggPrebuildWireframeCylinder(UGG_CYLINDER_STEPS);
-    _global.__wireframeCone        = __UggPrebuildWireframeCone(UGG_CONE_STEPS);
-    _global.__wireframePyramid     = __UggPrebuildWireframePyramid();
-    _global.__wireframeAABB        = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
-    _global.__wireframePlane       = __UggPrebuildWireframePlane(UGG_PLANE_SIZE, 8);
-    _global.__wireframeCircle      = __UggPrebuildWireframeCircle(UGG_CIRCLE_STEPS);
-    _global.__wireframeCapsuleCap  = __UggPrebuildWireframeCapsuleCap(UGG_CAPSULE_STEPS);
-    _global.__wireframeCapsuleBody = __UggPrebuildWireframeCapsuleBody(UGG_CAPSULE_STEPS);
-    
-    
+        __volumeAABB        = __UggPrebuildVolumeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
+        __volumeCapsuleBody = __UggPrebuildVolumeCapsuleBody(UGG_CAPSULE_STEPS);
+        __volumeCapsuleCap  = __UggPrebuildVolumeCapsuleCap(UGG_CAPSULE_STEPS);
+        __volumeCircle      = __UggPrebuildVolumeCircle(UGG_CIRCLE_STEPS);
+        __volumeCone        = __UggPrebuildVolumeCone(UGG_CONE_STEPS);
+        __volumeCylinder    = __UggPrebuildVolumeCylinder(UGG_CYLINDER_STEPS);
+        __volumeLine        = __UggPrebuildVolumeAABB(-0.5, -0.5,  0.0, 0.5, 0.5, 1.0);
+        __volumePlane       = __UggPrebuildVolumePlane(UGG_PLANE_SIZE);
+        __volumePoint       = __UggPrebuildVolumeSphere(2);
+        __volumePyramid     = __UggPrebuildVolumePyramid();
+        __volumeSphere      = __UggPrebuildVolumeSphere(UGG_SPHERE_STEPS);
+        
+        __nativeAABB        = __UggConvertVolumeToNative(__volumeAABB       );
+        __nativeCapsuleBody = __UggConvertVolumeToNative(__volumeCapsuleBody);
+        __nativeCapsuleCap  = __UggConvertVolumeToNative(__volumeCapsuleCap );
+        __nativeCircle      = __UggConvertVolumeToNative(__volumeCircle     );
+        __nativeCone        = __UggConvertVolumeToNative(__volumeCone       );
+        __nativeCylinder    = __UggConvertVolumeToNative(__volumeCylinder   );
+        __nativeLine        = __UggConvertVolumeToNative(__volumeLine       );
+        __nativePlane       = __UggConvertVolumeToNative(__volumePlane      );
+        __nativePoint       = __UggConvertVolumeToNative(__volumePoint      );
+        __nativePyramid     = __UggConvertVolumeToNative(__volumePyramid    );
+        __nativeSphere      = __UggConvertVolumeToNative(__volumeSphere     );
+        
+        vertex_freeze(__volumeAABB       );
+        vertex_freeze(__volumeCapsuleBody);
+        vertex_freeze(__volumeCapsuleCap );
+        vertex_freeze(__volumeCircle     );
+        vertex_freeze(__volumeCone       );
+        vertex_freeze(__volumeCylinder   );
+        vertex_freeze(__volumeLine       );
+        vertex_freeze(__volumePlane      );
+        vertex_freeze(__volumePoint      );
+        vertex_freeze(__volumePyramid    );
+        vertex_freeze(__volumeSphere     );
+        
+        __wireframeAABB        = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
+        __wireframeCapsuleBody = __UggPrebuildWireframeCapsuleBody(UGG_CAPSULE_STEPS);
+        __wireframeCapsuleCap  = __UggPrebuildWireframeCapsuleCap(UGG_CAPSULE_STEPS);
+        __wireframeCircle      = __UggPrebuildWireframeCircle(UGG_CIRCLE_STEPS);
+        __wireframeCone        = __UggPrebuildWireframeCone(UGG_CONE_STEPS);
+        __wireframeCylinder    = __UggPrebuildWireframeCylinder(UGG_CYLINDER_STEPS);
+        __wireframePlane       = __UggPrebuildWireframePlane(UGG_PLANE_SIZE, 8);
+        __wireframePoint       = __UggPrebuildWireframeSphere(2);
+        __wireframePyramid     = __UggPrebuildWireframePyramid();
+        __wireframeSphere      = __UggPrebuildWireframeSphere(UGG_SPHERE_STEPS);
+    }
     
     shader_set(__shdUggVolume);
     shader_set_uniform_f(shader_get_uniform(__shdUggVolume, "u_vAmbientColor"),
@@ -96,8 +130,6 @@ function __Ugg()
                                                                             color_get_green(UGG_DEFAULT_DIFFUSE_COLOR),
                                                                             color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR));
     shader_reset();
-    
-    
     
     return _global;
 }
