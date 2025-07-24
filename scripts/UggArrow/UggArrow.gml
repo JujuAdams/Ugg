@@ -22,11 +22,13 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     static _volumePyramid         = _global.__volumePyramid;
     static _wireframePyramid      = _global.__wireframePyramid;
     static _wireframeVertexFormat = _global.__wireframeVertexFormat;
+    static _nativeLine            = _global.__nativeLine;
+    static _nativePyramid         = _global.__nativePyramid;
     static _vectorMatrix          = matrix_build_identity();
     static _workMatrix            = matrix_build_identity();
     static _staticVBuff           = vertex_create_buffer();
     
-    _wireframe ??= _global.__wireframe;
+    _wireframe ??= __UGG_WIREFRAME;
     
     if (_arrowSize == undefined) _arrowSize = 4*_thickness;
     
@@ -114,7 +116,7 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
         matrix_set(matrix_world, matrix_stack_top());
         
         __UGG_VOLUME_SHADER
-        vertex_submit(_volumeLine, pr_trianglelist, -1);
+        vertex_submit(__UGG_USE_SHADERS? _volumeLine : _nativeLine, pr_trianglelist, -1);
     }
     
     _workMatrix[@  0] = _vectorMatrix[@  0]*_arrowSize;
@@ -137,13 +139,14 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     matrix_stack_push(_workMatrix);
     matrix_set(matrix_world, matrix_stack_top());
     
+    //Shaders carry over
     if (_wireframe)
     {
         vertex_submit(_wireframePyramid, pr_linelist, -1);
     }
     else
     {
-        vertex_submit(_volumePyramid, pr_trianglelist, -1);
+        vertex_submit(__UGG_USE_SHADERS? _volumePyramid : _nativePyramid, pr_trianglelist, -1);
     }
     
     __UGG_RESET_SHADER

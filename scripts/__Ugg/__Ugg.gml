@@ -1,26 +1,41 @@
-
+// Feather disable all
 
 #macro __UGG_GLOBAL  static _global = __Ugg();
+
 #macro __UGG_COLOR_UNIFORMS  static _shdUggVolume_u_vColor    = shader_get_uniform(__shdUggVolume, "u_vColor");\
                              static _shdUggWireframe_u_vColor = shader_get_uniform(__shdUggWireframe, "u_vColor");
 
-#macro __UGG_WIREFRAME_SHADER  if (UGG_ENABLE_SHADER)\
+#macro __UGG_WIREFRAME    (UGG_FORCE_WIREFRAME ?? _global.__wireframe)
+#macro __UGG_USE_SHADERS  (UGG_FORCE_USE_SHADERS ?? _global.__useShaders)
+
+#macro __UGG_WIREFRAME_SHADER  if (__UGG_USE_SHADERS)\
                                {\
                                    shader_set(__shdUggWireframe);\
                                    shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));\
+                               }\
+                               else if (UGG_SET_FOG_TO_COLOR)\
+                               {\
+                                   gpu_set_fog(true, _color, 0, 0);\
                                }
 
-#macro __UGG_VOLUME_SHADER  if (UGG_ENABLE_SHADER)\
+#macro __UGG_VOLUME_SHADER  if (__UGG_USE_SHADERS)\
                             {\
                                 shader_set(__shdUggVolume);\
                                 shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));\
+                            }\
+                            else if (UGG_SET_FOG_TO_COLOR)\
+                            {\
+                                gpu_set_fog(true, _color, 0, 0);\
                             }
 
-#macro __UGG_RESET_SHADER  if (UGG_ENABLE_SHADER)\
+#macro __UGG_RESET_SHADER  if (__UGG_USE_SHADERS)\
                            {\
                                shader_reset();\
+                           }\
+                           else if (UGG_SET_FOG_TO_COLOR)\
+                           {\
+                               gpu_set_fog(false, c_black, 0, 16000);\
                            }
-
 __Ugg();
 
 function __Ugg()
@@ -33,6 +48,8 @@ function __Ugg()
     {
         show_debug_message($"Welcome to Ugg by Juju Adams! This is version {UGG_VERSION}, {UGG_DATE}");
         __wireframe = false;
+        
+        __useShaders = true;
         
         vertex_format_begin();
         vertex_format_add_position_3d();

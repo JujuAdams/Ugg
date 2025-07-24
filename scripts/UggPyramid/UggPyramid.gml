@@ -18,6 +18,7 @@ function UggPyramid(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIF
     __UGG_COLOR_UNIFORMS
     static _volumePyramid    = _global.__volumePyramid;
     static _wireframePyramid = _global.__wireframePyramid;
+    static _nativePyramid    = _global.__nativePyramid;
     static _staticMatrix     = matrix_build_identity();
     
     _staticMatrix[@  0] = _xSize;
@@ -30,7 +31,7 @@ function UggPyramid(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIF
     matrix_stack_push(_staticMatrix);
     matrix_set(matrix_world, matrix_stack_top());
     
-    if (_wireframe ?? _global.__wireframe)
+    if (_wireframe ?? __UGG_WIREFRAME)
     {
         __UGG_WIREFRAME_SHADER
         vertex_submit(_wireframePyramid, pr_linelist, -1);
@@ -38,7 +39,7 @@ function UggPyramid(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIF
     else
     {
         __UGG_VOLUME_SHADER
-        vertex_submit(_volumePyramid, pr_trianglelist, -1);
+        vertex_submit(__UGG_USE_SHADERS? _volumePyramid : _nativePyramid, pr_trianglelist, -1);
     }
     
     __UGG_RESET_SHADER

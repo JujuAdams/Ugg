@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"UggAxes",
+  "%Name":"UggGetUseShaders",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"UggAxes",
+  "name":"UggGetUseShaders",
   "parent":{
-    "name":"Shapes",
-    "path":"folders/Ugg/Shapes.yy",
+    "name":"Settings",
+    "path":"folders/Ugg/Settings.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

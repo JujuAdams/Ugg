@@ -21,9 +21,10 @@ function UggTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_D
     __UGG_COLOR_UNIFORMS
     static _volumeVertexFormat    = _global.__volumeVertexFormat;
     static _wireframeVertexFormat = _global.__wireframeVertexFormat;
+    static _nativeVertexFormat    = _global.__nativeVertexFormat;
     static _staticVBuff           = vertex_create_buffer();
     
-    if (_wireframe ?? _global.__wireframe)
+    if (_wireframe ?? __UGG_WIREFRAME)
     {
         vertex_begin(_staticVBuff, _wireframeVertexFormat);
         vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
@@ -53,11 +54,22 @@ function UggTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_D
         var _normalY = -(_dx12*_dz13 - _dz12*_dx13);
         var _normalZ = -(_dy12*_dx13 - _dx12*_dy13);
         
-        vertex_begin(_staticVBuff, _volumeVertexFormat);
-        vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-        vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-        vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
-        vertex_end(_staticVBuff);
+        if (__UGG_USE_SHADERS)
+        {
+            vertex_begin(_staticVBuff, _volumeVertexFormat);
+            vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+            vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+            vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
+            vertex_end(_staticVBuff);
+        }
+        else
+        {
+            vertex_begin(_staticVBuff, _nativeVertexFormat);
+            vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ); vertex_color(_staticVBuff, c_white, 1); vertex_texcoord(_staticVBuff, 0, 0);
+            vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ); vertex_color(_staticVBuff, c_white, 1); vertex_texcoord(_staticVBuff, 0, 0);
+            vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ); vertex_color(_staticVBuff, c_white, 1); vertex_texcoord(_staticVBuff, 0, 0);
+            vertex_end(_staticVBuff);
+        }
         
         __UGG_VOLUME_SHADER
         vertex_submit(_staticVBuff, pr_trianglelist, -1);

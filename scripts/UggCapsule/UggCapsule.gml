@@ -18,11 +18,13 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     static _volumeBody    = _global.__volumeCapsuleBody;
     static _wireframeCap  = _global.__wireframeCapsuleCap;
     static _wireframeBody = _global.__wireframeCapsuleBody;
+    static _nativeCap     = _global.__nativeCapsuleCap;
+    static _nativeBody    = _global.__nativeCapsuleBody;
     static _staticMatrix  = matrix_build_identity();
     
     _radius = min(_height/2, _radius);
     
-    if (_wireframe ?? _global.__wireframe)
+    if (_wireframe ?? __UGG_WIREFRAME)
     {
         __UGG_WIREFRAME_SHADER
         
@@ -32,11 +34,20 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     }
     else
     {
+        var _primitive = pr_trianglelist;
+        
         __UGG_VOLUME_SHADER
         
-        var _primitive = pr_trianglelist;
-        var _cap       = _volumeCap;
-        var _body      = _volumeBody;
+        if (__UGG_USE_SHADERS)
+        {
+            var _cap  = _volumeCap;
+            var _body = _volumeBody;
+        }
+        else
+        {
+            var _cap  = _nativeCap;
+            var _body = _nativeBody;
+        }
     }
     
     _staticMatrix[@  0] = _radius;

@@ -15,6 +15,7 @@ function UggPoint(_x, _y, _z, _color = UGG_DEFAULT_DIFFUSE_COLOR, _wireframe = u
     __UGG_COLOR_UNIFORMS
     static _volumePoint    = _global.__volumePoint;
     static _wireframePoint = _global.__wireframePoint;
+    static _nativePoint    = _global.__nativePoint;
     
     static _staticMatrix = [UGG_POINT_RADIUS, 0, 0, 0,
                             0, UGG_POINT_RADIUS, 0, 0,
@@ -28,7 +29,7 @@ function UggPoint(_x, _y, _z, _color = UGG_DEFAULT_DIFFUSE_COLOR, _wireframe = u
     matrix_stack_push(_staticMatrix);
     matrix_set(matrix_world, matrix_stack_top());
     
-    if (_wireframe ?? _global.__wireframe)
+    if (_wireframe ?? __UGG_WIREFRAME)
     {
         __UGG_WIREFRAME_SHADER
         vertex_submit(_wireframePoint, pr_linelist, -1);
@@ -36,7 +37,7 @@ function UggPoint(_x, _y, _z, _color = UGG_DEFAULT_DIFFUSE_COLOR, _wireframe = u
     else 
     {
         __UGG_VOLUME_SHADER
-        vertex_submit(_volumePoint, pr_trianglelist, -1);
+        vertex_submit(__UGG_USE_SHADERS? _volumePoint : _nativePoint, pr_trianglelist, -1);
     }
     
     __UGG_RESET_SHADER

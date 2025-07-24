@@ -19,6 +19,7 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
     __UGG_COLOR_UNIFORMS
     static _volumeCircle    = _global.__volumeCircle;
     static _wireframeCircle = _global.__wireframeCircle;
+    static _nativeCircle    = _global.__nativeCircle;
     static _staticMatrix    = matrix_build_identity();
     
     var _length = sqrt(_normalX*_normalX + _normalY*_normalY + _normalZ*_normalZ);
@@ -70,7 +71,7 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
     matrix_stack_push(_staticMatrix);
     matrix_set(matrix_world, matrix_stack_top());
     
-    if (_wireframe ?? _global.__wireframe)
+    if (_wireframe ?? __UGG_WIREFRAME)
     {
         __UGG_WIREFRAME_SHADER
         vertex_submit(_wireframeCircle, pr_linelist, -1);
@@ -81,7 +82,7 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
         gpu_set_cullmode(cull_noculling);
         
         __UGG_VOLUME_SHADER
-        vertex_submit(_volumeCircle, pr_trianglelist, -1);
+        vertex_submit(__UGG_USE_SHADERS? _volumeCircle : _nativeCircle, pr_trianglelist, -1);
         
         gpu_set_cullmode(_oldCullmode);
     }

@@ -4,12 +4,29 @@
 //Default thickness of `UggLine()`.
 #macro UGG_LINE_THICKNESS  2
 
-//Default base colour for Ugg's shapes.
+//Default base colour for Ugg's shapes. This macro will be ignored if Ugg shaders are not in use
+//and `UGG_SET_FOG_TO_COLOR` has been set to `false`. In this situation, all shapes will be white.
 #macro UGG_DEFAULT_DIFFUSE_COLOR  c_white
 
-//Parameters for Ugg's in-built light source. This light is used to give extra depth to shapes
-//which helps with legibility. Set both `UGG_AMBIENT_LIGHT_COLOR` and `UGG_LIGHT_COLOR` to
-//`c_white` to turn off lighting entirely.
+//Whether to force wireframe drawing on or off. Set this macro to `undefined` to allow wireframe
+//drawing to be toggled by `UggSetWireframe()` or by functions themselves.
+#macro UGG_FORCE_WIREFRAME  undefined
+
+//Whether to force Ugg shader usage drawing on or off. Set this macro to `undefined` to allow
+//Ugg shader usage to be toggled by `UggSetUseShaders()`.
+/// 
+/// N.B. Disabling shaders will also disable Ugg's basic system.
+#macro UGG_FORCE_USE_SHADERS  undefined
+
+//Whether to set the fog colour to the shape colour when Ugg shaders are not in use. This allows
+//shapes to be drawn in colour even if Ugg shaders are disabled.
+//
+//N.B. This setting will overwrite the fog value. Prior fog values will not be restored and will
+//     instead be overwritten.
+#macro UGG_SET_FOG_TO_COLOR  true
+
+//Parameters for Ugg's in-built light source, enabled when using Ugg's shaders. This light is used
+//to give extra depth to shapes which helps with legibility.
 #macro UGG_AMBIENT_LIGHT_COLOR    c_gray
 #macro UGG_LIGHT_COLOR            c_white
 #macro UGG_LIGHT_DIRECTION_X      -0.4

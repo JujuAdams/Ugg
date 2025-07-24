@@ -17,6 +17,7 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     __UGG_COLOR_UNIFORMS
     static _volumePlane    = _global.__volumePlane;
     static _wireframePlane = _global.__wireframePlane;
+    static _nativePlane    = _global.__nativePlane;
     static _staticMatrix   = matrix_build_identity();
     
     var _length = sqrt(_dx*_dx + _dy*_dy + _dz*_dz);
@@ -78,7 +79,7 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     matrix_stack_push(_staticMatrix);
     matrix_set(matrix_world, matrix_stack_top());
     
-    if (_wireframe ?? _global.__wireframe)
+    if (_wireframe ?? __UGG_WIREFRAME)
     {
         __UGG_WIREFRAME_SHADER
         vertex_submit(_wireframePlane, pr_linelist, -1);
@@ -89,7 +90,7 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
         gpu_set_cullmode(cull_noculling);
         
         __UGG_VOLUME_SHADER
-        vertex_submit(_volumePlane, pr_trianglelist, -1);
+        vertex_submit(__UGG_USE_SHADERS? _volumePlane : _nativePlane, pr_trianglelist, -1);
         
         gpu_set_cullmode(_oldCullmode);
     }

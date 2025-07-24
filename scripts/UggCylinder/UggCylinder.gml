@@ -16,6 +16,7 @@ function UggCylinder(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_
     __UGG_COLOR_UNIFORMS
     static _volumeCylinder    = _global.__volumeCylinder;
     static _wireframeCylinder = _global.__wireframeCylinder;
+    static _nativeCylinder    = _global.__nativeCylinder;
     static _staticMatrix      = matrix_build_identity();
     
     _staticMatrix[@  0] = _radius;
@@ -28,7 +29,7 @@ function UggCylinder(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_
     matrix_stack_push(_staticMatrix);
     matrix_set(matrix_world, matrix_stack_top());
     
-    if (_wireframe ?? _global.__wireframe)
+    if (_wireframe ?? __UGG_WIREFRAME)
     {
         __UGG_WIREFRAME_SHADER
         vertex_submit(_wireframeCylinder, pr_linelist, -1);
@@ -36,7 +37,7 @@ function UggCylinder(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_
     else
     {
         __UGG_VOLUME_SHADER
-        vertex_submit(_volumeCylinder, pr_trianglelist, -1);
+        vertex_submit(__UGG_USE_SHADERS? _volumeCylinder : _nativeCylinder, pr_trianglelist, -1);
     }
     
     __UGG_RESET_SHADER
