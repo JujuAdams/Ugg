@@ -6,7 +6,7 @@ function __UggPrebuildVolumeCone(_steps)
     vertex_begin(_vertexBuffer, __Ugg().__volumeVertexFormat);
     
     var _incr = 360 / _steps;
-    var _angle = _incr/2;
+    var _angle = 0;
     
     var _bx = dcos(_angle);
     var _by = dsin(_angle);
