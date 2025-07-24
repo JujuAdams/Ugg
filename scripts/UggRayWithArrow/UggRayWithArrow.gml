@@ -9,11 +9,10 @@
 /// @param dY
 /// @param dZ
 /// @param [color]
-/// @param [length]
 /// @param [thickness]
 /// @param [wireframe}
 
-function UggRayWithArrow(_x1, _y1, _z1, _dX, _dY, _dZ, _color = UGG_DEFAULT_DIFFUSE_COLOR, _length =  UGG_DEFAULT_RAY_LENGTH, _thickness = UGG_LINE_THICKNESS, _wireframe = undefined)
+function UggRayWithArrow(_x1, _y1, _z1, _dX, _dY, _dZ, _color = UGG_DEFAULT_DIFFUSE_COLOR, _thickness = UGG_LINE_THICKNESS, _wireframe = undefined)
 {
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
@@ -21,9 +20,9 @@ function UggRayWithArrow(_x1, _y1, _z1, _dX, _dY, _dZ, _color = UGG_DEFAULT_DIFF
     static _wireframePyramid = _global.__wireframePyramid;
     static _vectorMatrix     = matrix_build_identity();
     
-    var _x2 = _x1 + _length*_dX;
-    var _y2 = _y1 + _length*_dY;
-    var _z2 = _z1 + _length*_dZ;
+    var _x2 = _x1 + UGG_RAY_LENGTH*_dX;
+    var _y2 = _y1 + UGG_RAY_LENGTH*_dY;
+    var _z2 = _z1 + UGG_RAY_LENGTH*_dZ;
     
     var _dist = sqrt(_dX*_dX + _dY*_dY + _dZ*_dZ);
     if (_dist == 0) return false;
