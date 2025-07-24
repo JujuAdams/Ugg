@@ -47,7 +47,6 @@
     {"id":{"name":"__Ugg","path":"scripts/__Ugg/__Ugg.yy",},},
     {"id":{"name":"__UggConfig","path":"scripts/__UggConfig/__UggConfig.yy",},},
     {"id":{"name":"__UggConstants","path":"scripts/__UggConstants/__UggConstants.yy",},},
-    {"id":{"name":"__UggMatrixInvert","path":"scripts/__UggMatrixInvert/__UggMatrixInvert.yy",},},
     {"id":{"name":"__UggMatrixTransformVertex4DDivW","path":"scripts/__UggMatrixTransformVertex4DDivW/__UggMatrixTransformVertex4DDivW.yy",},},
     {"id":{"name":"__UggPrebuildVolumeAABB","path":"scripts/__UggPrebuildVolumeAABB/__UggPrebuildVolumeAABB.yy",},},
     {"id":{"name":"__UggPrebuildVolumeCapsuleBody","path":"scripts/__UggPrebuildVolumeCapsuleBody/__UggPrebuildVolumeCapsuleBody.yy",},},

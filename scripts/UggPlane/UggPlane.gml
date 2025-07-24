@@ -28,8 +28,7 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     
     //TODO - Optimize
     
-    var _viewMatrix = matrix_get(matrix_view);
-    var _invViewMatrix = __UggMatrixInvert(_viewMatrix);
+    var _invViewMatrix = matrix_inverse(matrix_get(matrix_view));
     var _camX = _invViewMatrix[12];
     var _camY = _invViewMatrix[13];
     var _camZ = _invViewMatrix[14];

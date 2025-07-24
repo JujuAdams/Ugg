@@ -25,7 +25,6 @@
     {"name":"objTriangle","order":13,"path":"objects/objTriangle/objTriangle.yy",},
     {"name":"rmTest","order":1,"path":"rooms/rmTest/rmTest.yy",},
     {"name":"__UggConstants","order":1,"path":"scripts/__UggConstants/__UggConstants.yy",},
-    {"name":"__UggMatrixInvert","order":6,"path":"scripts/__UggMatrixInvert/__UggMatrixInvert.yy",},
     {"name":"__UggMatrixTransformVertex4DDivW","order":5,"path":"scripts/__UggMatrixTransformVertex4DDivW/__UggMatrixTransformVertex4DDivW.yy",},
     {"name":"__UggPrebuildVolumeAABB","order":7,"path":"scripts/__UggPrebuildVolumeAABB/__UggPrebuildVolumeAABB.yy",},
     {"name":"__UggPrebuildVolumeCapsuleBody","order":2,"path":"scripts/__UggPrebuildVolumeCapsuleBody/__UggPrebuildVolumeCapsuleBody.yy",},

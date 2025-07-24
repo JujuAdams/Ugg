@@ -24,20 +24,15 @@ function UggRayWithArrow(_x1, _y1, _z1, _dX, _dY, _dZ, _color = UGG_DEFAULT_DIFF
     var _y2 = _y1 + UGG_RAY_LENGTH*_dY;
     var _z2 = _z1 + UGG_RAY_LENGTH*_dZ;
     
-    var _dist = sqrt(_dX*_dX + _dY*_dY + _dZ*_dZ);
-    if (_dist == 0) return false;
+    var _distSqr = _dX*_dX + _dY*_dY + _dZ*_dZ;
+    if (_distSqr == 0) return false;
     
-    _dX /= _dist;
-    _dY /= _dist;
-    _dZ /= _dist;
-    
-    var _viewMatrix = matrix_get(matrix_view);
-    var _invViewMatrix = __UggMatrixInvert(_viewMatrix);
+    var _invViewMatrix = matrix_inverse(matrix_get(matrix_view));
     var _camX = _invViewMatrix[12];
     var _camY = _invViewMatrix[13];
     var _camZ = _invViewMatrix[14];
     
-    var _dot = max(0.1, dot_product_3d(_dX, _dY, _dZ, _camX - _x1, _camY - _y1, _camZ - _z1));
+    var _dot = max(0.1, dot_product_3d(_dX, _dY, _dZ, _camX - _x1, _camY - _y1, _camZ - _z1) / _distSqr);
     var _arrowX = _x1 + _dot*_dX;
     var _arrowY = _y1 + _dot*_dY;
     var _arrowZ = _z1 + _dot*_dZ;
