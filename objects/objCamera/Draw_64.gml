@@ -28,7 +28,7 @@ if (showInfo)
 
 var _x = 0.5*display_get_gui_width();
 var _y = 0.5*display_get_gui_height();
-gpu_set_blendmode_ext( bm_inv_dest_color, bm_inv_src_color);
+gpu_set_blendmode_ext(bm_inv_dest_color, bm_inv_src_color);
 draw_line(_x - 20, _y, _x + 20, _y);
 draw_line(_x, _y - 20, _x, _y + 20);
 gpu_set_blendmode(bm_normal);

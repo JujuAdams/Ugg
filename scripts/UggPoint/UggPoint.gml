@@ -31,18 +31,14 @@ function UggPoint(_x, _y, _z, _color = UGG_DEFAULT_DIFFUSE_COLOR, _wireframe = u
     if (_wireframe ?? _global.__wireframe)
     {
         shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(  _color),
-                                                        color_get_green(_color),
-                                                        color_get_blue( _color));
+        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
         vertex_submit(_wireframePoint, pr_linelist, -1);
         shader_reset();
     }
     else 
     {
         shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color),
-                                                     color_get_green(_color),
-                                                     color_get_blue( _color));
+        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
         vertex_submit(_volumePoint, pr_trianglelist, -1);
         shader_reset();
     }

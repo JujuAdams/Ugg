@@ -73,9 +73,7 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
     if (_wireframe ?? _global.__wireframe)
     {
         shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(  _color),
-                                                        color_get_green(_color),
-                                                        color_get_blue( _color));
+        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
         vertex_submit(_wireframeCircle, pr_linelist, -1);
     }
     else
@@ -84,9 +82,7 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
         gpu_set_cullmode(cull_noculling);
         
         shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color),
-                                                     color_get_green(_color),
-                                                     color_get_blue( _color));
+        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
         vertex_submit(_volumeCircle, pr_trianglelist, -1);
         
         gpu_set_cullmode(_oldCullmode);

@@ -81,9 +81,7 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     if (_wireframe ?? _global.__wireframe)
     {
         shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(  _color),
-                                                        color_get_green(_color),
-                                                        color_get_blue( _color));
+        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
         vertex_submit(_wireframePlane, pr_linelist, -1);
         shader_reset();
     }
@@ -93,9 +91,7 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
         gpu_set_cullmode(cull_noculling);
         
         shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(  _color),
-                                                     color_get_green(_color),
-                                                     color_get_blue( _color));
+        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
         vertex_submit(_volumePlane, pr_trianglelist, -1);
         shader_reset();
         
