@@ -28,8 +28,7 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
     	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
     	vertex_end(_staticVBuff);
         
-        shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_WIREFRAME_SHADER
         vertex_submit(_staticVBuff, pr_linelist, -1);
     }
     else
@@ -87,13 +86,12 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
         matrix_stack_push(_staticMatrix);
         matrix_set(matrix_world, matrix_stack_top());
         
-        shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_VOLUME_SHADER
         vertex_submit(_volumeLine, pr_trianglelist, -1);
         
         matrix_stack_pop();
         matrix_set(matrix_world, matrix_stack_top());
     }
     
-    shader_reset();
+    __UGG_RESET_SHADER
 }

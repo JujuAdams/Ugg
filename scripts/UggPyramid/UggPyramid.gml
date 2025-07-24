@@ -32,18 +32,16 @@ function UggPyramid(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIF
     
     if (_wireframe ?? _global.__wireframe)
     {
-        shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_WIREFRAME_SHADER
         vertex_submit(_wireframePyramid, pr_linelist, -1);
-        shader_reset();
     }
     else
     {
-        shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_VOLUME_SHADER
         vertex_submit(_volumePyramid, pr_trianglelist, -1);
-        shader_reset();
     }
+    
+    __UGG_RESET_SHADER
     
     matrix_stack_pop();
     matrix_set(matrix_world, matrix_stack_top());

@@ -4,7 +4,13 @@
 #macro __UGG_COLOR_UNIFORMS  static _shdUggVolume_u_vColor    = shader_get_uniform(__shdUggVolume, "u_vColor");\
                              static _shdUggWireframe_u_vColor = shader_get_uniform(__shdUggWireframe, "u_vColor");
 
+#macro __UGG_WIREFRAME_SHADER  shader_set(__shdUggWireframe);\
+                               shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
 
+#macro __UGG_VOLUME_SHADER  shader_set(__shdUggVolume);\
+                            shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+
+#macro __UGG_RESET_SHADER  shader_reset();
 
 __Ugg();
 
@@ -87,8 +93,8 @@ function __Ugg()
     
     shader_set(__shdUggWireframe);
     shader_set_uniform_f(shader_get_uniform(__shdUggWireframe, "u_vColor"), color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR),
-                                                                       color_get_green(UGG_DEFAULT_DIFFUSE_COLOR),
-                                                                       color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR));
+                                                                            color_get_green(UGG_DEFAULT_DIFFUSE_COLOR),
+                                                                            color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR));
     shader_reset();
     
     

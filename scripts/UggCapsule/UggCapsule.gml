@@ -24,8 +24,7 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     
     if (_wireframe ?? _global.__wireframe)
     {
-        shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_WIREFRAME_SHADER
         
         var _primitive = pr_linelist;
         var _cap       = _wireframeCap;
@@ -33,8 +32,7 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     }
     else
     {
-        shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_VOLUME_SHADER
         
         var _primitive = pr_trianglelist;
         var _cap       = _volumeCap;
@@ -79,5 +77,5 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     
     matrix_set(matrix_world, matrix_stack_top());
     
-    shader_reset();
+    __UGG_RESET_SHADER
 }

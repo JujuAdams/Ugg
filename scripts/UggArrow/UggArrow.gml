@@ -84,21 +84,16 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     
     if (_wireframe)
     {
-        shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
-        
     	vertex_begin(_staticVBuff, _wireframeVertexFormat);
     	vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
     	vertex_position_3d(_staticVBuff, _x2, _y2, _z2); vertex_color(_staticVBuff, c_white, 1);
     	vertex_end(_staticVBuff);
         
+        __UGG_WIREFRAME_SHADER
         vertex_submit(_staticVBuff, pr_linelist, -1);
     }
     else
     {
-        shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
-        
         _workMatrix[@  0] = _vectorMatrix[@  0]*_thickness;
         _workMatrix[@  1] = _vectorMatrix[@  1]*_thickness;
         _workMatrix[@  2] = _vectorMatrix[@  2]*_thickness;
@@ -117,6 +112,8 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
         
         matrix_stack_push(_workMatrix);
         matrix_set(matrix_world, matrix_stack_top());
+        
+        __UGG_VOLUME_SHADER
         vertex_submit(_volumeLine, pr_trianglelist, -1);
     }
     
@@ -149,7 +146,7 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
         vertex_submit(_volumePyramid, pr_trianglelist, -1);
     }
     
-    shader_reset();
+    __UGG_RESET_SHADER
     matrix_stack_pop();
     matrix_set(matrix_world, matrix_stack_top());
 }

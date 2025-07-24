@@ -34,10 +34,8 @@ function UggTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_D
     	vertex_position_3d(_staticVBuff, _x1, _y1, _z1); vertex_color(_staticVBuff, c_white, 1);
     	vertex_end(_staticVBuff);
         
-        shader_set(__shdUggWireframe);
-        shader_set_uniform_f(_shdUggWireframe_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_WIREFRAME_SHADER
         vertex_submit(_staticVBuff, pr_linelist, -1);
-        shader_reset();
     }
     else
     {
@@ -61,11 +59,11 @@ function UggTriangle(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _color = UGG_D
     	vertex_position_3d(_staticVBuff, _x3, _y3, _z3); vertex_normal(_staticVBuff, _normalX, _normalY, _normalZ);
     	vertex_end(_staticVBuff);
         
-        shader_set(__shdUggVolume);
-        shader_set_uniform_f(_shdUggVolume_u_vColor, color_get_red(_color), color_get_green(_color), color_get_blue(_color));
+        __UGG_VOLUME_SHADER
         vertex_submit(_staticVBuff, pr_trianglelist, -1);
-        shader_reset();
         
         gpu_set_cullmode(_oldCullmode);
     }
+    
+    __UGG_RESET_SHADER
 }
