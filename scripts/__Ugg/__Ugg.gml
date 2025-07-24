@@ -108,8 +108,8 @@ function __Ugg()
         __wireframeCapsuleBody = __UggPrebuildWireframeCapsuleBody(UGG_CAPSULE_STEPS);
         __wireframeCapsuleCap  = __UggPrebuildWireframeCapsuleCap(UGG_CAPSULE_STEPS);
         __wireframeCircle      = __UggPrebuildWireframeCircle(UGG_CIRCLE_STEPS);
-        __wireframeCylinder    = __UggPrebuildWireframeCylinder(UGG_CYLINDER_STEPS);
         __wireframeCone        = __UggPrebuildWireframeCone(UGG_CONE_STEPS, 8);
+        __wireframeCylinder    = __UggPrebuildWireframeCylinder(UGG_CYLINDER_STEPS, 8);
         __wireframePlane       = __UggPrebuildWireframePlane(UGG_PLANE_SIZE, 8);
         __wireframePoint       = __UggPrebuildWireframeSphere(2);
         __wireframePyramid     = __UggPrebuildWireframePyramid();
