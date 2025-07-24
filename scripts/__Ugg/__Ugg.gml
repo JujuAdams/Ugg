@@ -105,8 +105,8 @@ function __Ugg()
         vertex_freeze(__volumeSphere     );
         
         __wireframeAABB        = __UggPrebuildWireframeAABB(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5);
-        __wireframeCapsuleBody = __UggPrebuildWireframeCapsuleBody(UGG_CAPSULE_STEPS);
-        __wireframeCapsuleCap  = __UggPrebuildWireframeCapsuleCap(UGG_CAPSULE_STEPS);
+        __wireframeCapsuleBody = __UggPrebuildWireframeCapsuleBody(UGG_CAPSULE_STEPS, 6);
+        __wireframeCapsuleCap  = __UggPrebuildWireframeCapsuleCap(UGG_CAPSULE_STEPS, 6);
         __wireframeCircle      = __UggPrebuildWireframeCircle(UGG_CIRCLE_STEPS);
         __wireframeCone        = __UggPrebuildWireframeCone(UGG_CONE_STEPS, 8);
         __wireframeCylinder    = __UggPrebuildWireframeCylinder(UGG_CYLINDER_STEPS, 8);
