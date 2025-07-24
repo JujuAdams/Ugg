@@ -11,6 +11,7 @@ Volumetric and wireframe modes available for all shapes. Shapes can be coloured 
 Shapes included are:
 
 - Line
+- Ray (and ray-with-arrow variant)
 - Arrow
 - Point
 - Sphere
