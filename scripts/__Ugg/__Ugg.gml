@@ -78,17 +78,17 @@ function __Ugg()
     var _directionZ = UGG_LIGHT_DIRECTION_Z*_inverseLength;
     
     shader_set_uniform_f(shader_get_uniform(__shdUggVolume, "u_vDirectLightDirection"), _directionX, _directionY, _directionZ);
-    shader_set_uniform_f(shader_get_uniform(__shdUggVolume, "u_vColor"), color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR)/255,
-                                                                         color_get_green(UGG_DEFAULT_DIFFUSE_COLOR)/255,
-                                                                         color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR)/255);
+    shader_set_uniform_f(shader_get_uniform(__shdUggVolume, "u_vColor"), color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR),
+                                                                         color_get_green(UGG_DEFAULT_DIFFUSE_COLOR),
+                                                                         color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR));
     shader_reset();
     
     
     
     shader_set(__shdUggWireframe);
-    shader_set_uniform_f(shader_get_uniform(__shdUggWireframe, "u_vColor"), color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR)/255,
-                                                                       color_get_green(UGG_DEFAULT_DIFFUSE_COLOR)/255,
-                                                                       color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR)/255);
+    shader_set_uniform_f(shader_get_uniform(__shdUggWireframe, "u_vColor"), color_get_red(  UGG_DEFAULT_DIFFUSE_COLOR),
+                                                                       color_get_green(UGG_DEFAULT_DIFFUSE_COLOR),
+                                                                       color_get_blue( UGG_DEFAULT_DIFFUSE_COLOR));
     shader_reset();
     
     
