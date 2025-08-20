@@ -70,6 +70,8 @@
     {"id":{"name":"__UggPrebuildWireframePyramid","path":"scripts/__UggPrebuildWireframePyramid/__UggPrebuildWireframePyramid.yy",},},
     {"id":{"name":"__UggPrebuildWireframeSphere","path":"scripts/__UggPrebuildWireframeSphere/__UggPrebuildWireframeSphere.yy",},},
     {"id":{"name":"ClassCamera","path":"scripts/ClassCamera/ClassCamera.yy",},},
+    {"id":{"name":"D3FrustrumLine","path":"scripts/D3FrustrumLine/D3FrustrumLine.yy",},},
+    {"id":{"name":"D3FrustrumRay","path":"scripts/D3FrustrumRay/D3FrustrumRay.yy",},},
     {"id":{"name":"D3RandomVector","path":"scripts/D3RandomVector/D3RandomVector.yy",},},
     {"id":{"name":"draw_surface_depth","path":"scripts/draw_surface_depth/draw_surface_depth.yy",},},
     {"id":{"name":"UggAABB","path":"scripts/UggAABB/UggAABB.yy",},},

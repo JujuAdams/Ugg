@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"D3FrustrumLine",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"D3FrustrumLine",
+  "parent":{
+    "name":"ugg",
+    "path":"ugg.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

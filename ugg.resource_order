@@ -1,6 +1,6 @@
 {
   "FolderOrderSettings":[
-    {"name":"Ugg","order":23,"path":"folders/Ugg.yy",},
+    {"name":"Ugg","order":25,"path":"folders/Ugg.yy",},
     {"name":"(System)","order":1,"path":"folders/Ugg/(System).yy",},
     {"name":"Volumes","order":1,"path":"folders/Ugg/(System)/Volumes.yy",},
     {"name":"Wireframes","order":2,"path":"folders/Ugg/(System)/Wireframes.yy",},
@@ -48,6 +48,8 @@
     {"name":"__UggPrebuildWireframePyramid","order":7,"path":"scripts/__UggPrebuildWireframePyramid/__UggPrebuildWireframePyramid.yy",},
     {"name":"__UggPrebuildWireframeSphere","order":8,"path":"scripts/__UggPrebuildWireframeSphere/__UggPrebuildWireframeSphere.yy",},
     {"name":"ClassCamera","order":22,"path":"scripts/ClassCamera/ClassCamera.yy",},
+    {"name":"D3FrustrumLine","order":23,"path":"scripts/D3FrustrumLine/D3FrustrumLine.yy",},
+    {"name":"D3FrustrumRay","order":24,"path":"scripts/D3FrustrumRay/D3FrustrumRay.yy",},
     {"name":"D3RandomVector","order":2,"path":"scripts/D3RandomVector/D3RandomVector.yy",},
     {"name":"draw_surface_depth","order":1,"path":"scripts/draw_surface_depth/draw_surface_depth.yy",},
     {"name":"UggArrow","order":1,"path":"scripts/UggArrow/UggArrow.yy",},
