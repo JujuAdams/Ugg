@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"D3RandomVector",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"D3RandomVector",
+  "parent":{
+    "name":"ugg",
+    "path":"ugg.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

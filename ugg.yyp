@@ -70,6 +70,7 @@
     {"id":{"name":"__UggPrebuildWireframePyramid","path":"scripts/__UggPrebuildWireframePyramid/__UggPrebuildWireframePyramid.yy",},},
     {"id":{"name":"__UggPrebuildWireframeSphere","path":"scripts/__UggPrebuildWireframeSphere/__UggPrebuildWireframeSphere.yy",},},
     {"id":{"name":"ClassCamera","path":"scripts/ClassCamera/ClassCamera.yy",},},
+    {"id":{"name":"D3RandomVector","path":"scripts/D3RandomVector/D3RandomVector.yy",},},
     {"id":{"name":"draw_surface_depth","path":"scripts/draw_surface_depth/draw_surface_depth.yy",},},
     {"id":{"name":"UggAABB","path":"scripts/UggAABB/UggAABB.yy",},},
     {"id":{"name":"UggArrow","path":"scripts/UggArrow/UggArrow.yy",},},

@@ -1,1 +1,1 @@
-UggArrow(x, y, 0, x + 40, y + 40, 40);
+UggArrow(x, y, 0, x + dX, y + dY, dZ);
