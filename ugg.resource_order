@@ -1,11 +1,11 @@
 {
   "FolderOrderSettings":[
     {"name":"Ugg","order":25,"path":"folders/Ugg.yy",},
-    {"name":"(System)","order":1,"path":"folders/Ugg/(System).yy",},
+    {"name":"Misc","order":3,"path":"folders/Ugg/Misc.yy",},
     {"name":"Volumes","order":1,"path":"folders/Ugg/(System)/Volumes.yy",},
     {"name":"Wireframes","order":2,"path":"folders/Ugg/(System)/Wireframes.yy",},
-    {"name":"Settings","order":2,"path":"folders/Ugg/Settings.yy",},
-    {"name":"Shapes","order":3,"path":"folders/Ugg/Shapes.yy",},
+    {"name":"Settings","order":1,"path":"folders/Ugg/Settings.yy",},
+    {"name":"Shapes","order":2,"path":"folders/Ugg/Shapes.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"objAABB","order":10,"path":"objects/objAABB/objAABB.yy",},
