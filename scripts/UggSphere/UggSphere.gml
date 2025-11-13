@@ -16,7 +16,9 @@ function UggSphere(_x, _y, _z, _radius, _color = UGG_DEFAULT_DIFFUSE_COLOR, _wir
     static _volumeSphere    = _global.__volumeSphere;
     static _wireframeSphere = _global.__wireframeSphere;
     static _nativeSphere    = _global.__nativeSphere;
+    static _oldWorldMatrix  = matrix_build_identity();
     static _staticMatrix    = matrix_build_identity();
+    static _newWorldMatrix  = matrix_build_identity();
     
     _staticMatrix[@  0] = _radius;
     _staticMatrix[@  5] = _radius;
@@ -25,8 +27,9 @@ function UggSphere(_x, _y, _z, _radius, _color = UGG_DEFAULT_DIFFUSE_COLOR, _wir
     _staticMatrix[@ 13] = _y;
     _staticMatrix[@ 14] = _z;
     
-    matrix_stack_push(_staticMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_get(matrix_world, _oldWorldMatrix);
+    matrix_multiply(_staticMatrix, _oldWorldMatrix, _newWorldMatrix);
+    matrix_set(matrix_world, _newWorldMatrix);
     
     if (_wireframe ?? __UGG_WIREFRAME)
     {
@@ -41,6 +44,5 @@ function UggSphere(_x, _y, _z, _radius, _color = UGG_DEFAULT_DIFFUSE_COLOR, _wir
     
     __UGG_RESET_SHADER
     
-    matrix_stack_pop();
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_set(matrix_world, _oldWorldMatrix);
 }

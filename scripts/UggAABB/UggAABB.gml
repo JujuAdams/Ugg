@@ -15,10 +15,12 @@ function UggAABB(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIFFUS
 {
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
-    static _volumeAABB    = _global.__volumeAABB;
-    static _wireframeAABB = _global.__wireframeAABB;
-    static _nativeAABB    = _global.__nativeAABB;
-    static _staticMatrix  = matrix_build_identity();
+    static _volumeAABB     = _global.__volumeAABB;
+    static _wireframeAABB  = _global.__wireframeAABB;
+    static _nativeAABB     = _global.__nativeAABB;
+    static _oldWorldMatrix = matrix_build_identity();
+    static _staticMatrix   = matrix_build_identity();
+    static _newWorldMatrix = matrix_build_identity();
     
     _staticMatrix[@  0] = _xSize;
     _staticMatrix[@  5] = _ySize;
@@ -27,8 +29,9 @@ function UggAABB(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIFFUS
     _staticMatrix[@ 13] = _y;
     _staticMatrix[@ 14] = _z;
     
-    matrix_stack_push(_staticMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_get(matrix_world, _oldWorldMatrix);
+    matrix_multiply(_staticMatrix, _oldWorldMatrix, _newWorldMatrix);
+    matrix_set(matrix_world, _newWorldMatrix);
     
     if (_wireframe ?? __UGG_WIREFRAME)
     {
@@ -43,6 +46,5 @@ function UggAABB(_x, _y, _z, _xSize, _ySize, _zSize, _color = UGG_DEFAULT_DIFFUS
     
     __UGG_RESET_SHADER
     
-    matrix_stack_pop();
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_set(matrix_world, _oldWorldMatrix);
 }
