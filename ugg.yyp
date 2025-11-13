@@ -1,8 +1,8 @@
 {
-  "$GMProject":"",
+  "$GMProject":"v1",
   "%Name":"ugg",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -12,19 +12,20 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Ugg","folderPath":"folders/Ugg.yy","name":"Ugg","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"(System)","folderPath":"folders/Ugg/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Misc","folderPath":"folders/Ugg/Misc.yy","name":"Misc","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Volumes","folderPath":"folders/Ugg/(System)/Volumes.yy","name":"Volumes","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Wireframes","folderPath":"folders/Ugg/(System)/Wireframes.yy","name":"Wireframes","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Misc","folderPath":"folders/Ugg/Misc.yy","name":"Misc","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Settings","folderPath":"folders/Ugg/Settings.yy","name":"Settings","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shapes","folderPath":"folders/Ugg/Shapes.yy","name":"Shapes","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
+  "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"ugg_license.txt","CopyToMask":-1,"filePath":"datafiles","name":"ugg_license.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.11.0.179",
+    "IDEVersion":"2024.14.0.207",
   },
   "name":"ugg",
   "resources":[
