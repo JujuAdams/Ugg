@@ -19,7 +19,9 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
     static _nativeLine            = _global.__nativeLine;
     static _volumeLine            = _global.__volumeLine;
     static _wireframeVertexFormat = _global.__wireframeVertexFormat;
+    static _oldWorldMatrix        = matrix_build_identity();
     static _staticMatrix          = matrix_build_identity();
+    static _newWorldMatrix        = matrix_build_identity();
     static _staticVBuff           = vertex_create_buffer();
     
     if (_wireframe ?? __UGG_WIREFRAME)
@@ -94,14 +96,14 @@ function UggLine(_x1, _y1, _z1, _x2, _y2, _z2, _color = UGG_DEFAULT_DIFFUSE_COLO
         _staticMatrix[@ 13] = _y1;
         _staticMatrix[@ 14] = _z1;
         
-        matrix_stack_push(_staticMatrix);
-        matrix_set(matrix_world, matrix_stack_top());
+        matrix_get(matrix_world, _oldWorldMatrix);
+        matrix_multiply(_staticMatrix, _oldWorldMatrix, _newWorldMatrix);
+        matrix_set(matrix_world, _newWorldMatrix);
         
         __UGG_VOLUME_SHADER
         vertex_submit(__UGG_USE_SHADERS? _volumeLine : _nativeLine, pr_trianglelist, -1);
         
-        matrix_stack_pop();
-        matrix_set(matrix_world, matrix_stack_top());
+        matrix_set(matrix_world, _oldWorldMatrix);
     }
     
     __UGG_RESET_SHADER

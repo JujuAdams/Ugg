@@ -24,8 +24,10 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     static _wireframeVertexFormat = _global.__wireframeVertexFormat;
     static _nativeLine            = _global.__nativeLine;
     static _nativePyramid         = _global.__nativePyramid;
+    static _oldWorldMatrix        = matrix_build_identity();
     static _vectorMatrix          = matrix_build_identity();
     static _workMatrix            = matrix_build_identity();
+    static _newWorldMatrix        = matrix_build_identity();
     static _staticVBuff           = vertex_create_buffer();
     
     _wireframe ??= __UGG_WIREFRAME;
@@ -94,6 +96,8 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     _y2 = _y1 + _length*_dy;
     _z2 = _z1 + _length*_dz;
     
+    matrix_get(matrix_world, _oldWorldMatrix);
+    
     if (_wireframe)
     {
         vertex_begin(_staticVBuff, _wireframeVertexFormat);
@@ -122,8 +126,8 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
         _workMatrix[@ 13] = _y1;
         _workMatrix[@ 14] = _z1;
         
-        matrix_stack_push(_workMatrix);
-        matrix_set(matrix_world, matrix_stack_top());
+        matrix_multiply(_workMatrix, _oldWorldMatrix, _newWorldMatrix);
+        matrix_set(matrix_world, _newWorldMatrix);
         
         __UGG_VOLUME_SHADER
         vertex_submit(__UGG_USE_SHADERS? _volumeLine : _nativeLine, pr_trianglelist, -1);
@@ -145,9 +149,8 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     _workMatrix[@ 13] = _y2;
     _workMatrix[@ 14] = _z2;
     
-    matrix_stack_pop();
-    matrix_stack_push(_workMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_multiply(_workMatrix, _oldWorldMatrix, _newWorldMatrix);
+    matrix_set(matrix_world, _newWorldMatrix);
     
     //Shaders carry over
     if (_wireframe)
@@ -160,6 +163,6 @@ function UggArrow(_x1, _y1, _z1, _x2, _y2, _z2, _arrowSize = undefined, _color =
     }
     
     __UGG_RESET_SHADER
-    matrix_stack_pop();
-    matrix_set(matrix_world, matrix_stack_top());
+    
+    matrix_set(matrix_world, _oldWorldMatrix);
 }
