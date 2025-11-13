@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Draws an infinite plane. The plane will follow the camera.
+/// Draws an infinite plane. The plane will follow the camera and is not affected by the world
+/// matrix.
 /// 
 /// @param x
 /// @param y
@@ -18,7 +19,10 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     static _volumePlane    = _global.__volumePlane;
     static _wireframePlane = _global.__wireframePlane;
     static _nativePlane    = _global.__nativePlane;
+    static _oldWorldMatrix = matrix_build_identity();
     static _staticMatrix   = matrix_build_identity();
+    static _invViewMatrix  = matrix_build_identity();
+    static _vector         = [0, 0, 0, 1];
     
     var _length = sqrt(_dx*_dx + _dy*_dy + _dz*_dz);
     if (_length == 0) return false;
@@ -27,9 +31,9 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     _dy /= _length;
     _dz /= _length;
     
-    //TODO - Optimize
+    matrix_get(matrix_view, _invViewMatrix)
+    matrix_inverse(_invViewMatrix, _invViewMatrix);
     
-    var _invViewMatrix = matrix_inverse(matrix_get(matrix_view));
     var _camX = _invViewMatrix[12];
     var _camY = _invViewMatrix[13];
     var _camZ = _invViewMatrix[14];
@@ -76,8 +80,8 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     _staticMatrix[@ 13] = _y;
     _staticMatrix[@ 14] = _z;
     
-    matrix_stack_push(_staticMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_get(matrix_world, _oldWorldMatrix);
+    matrix_set(matrix_world, _staticMatrix);
     
     if (_wireframe ?? __UGG_WIREFRAME)
     {
@@ -97,6 +101,5 @@ function UggPlane(_x, _y, _z, _dx, _dy, _dz, _color = UGG_DEFAULT_DIFFUSE_COLOR,
     
     __UGG_RESET_SHADER
     
-    matrix_stack_pop();
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_set(matrix_world, _oldWorldMatrix);
 }

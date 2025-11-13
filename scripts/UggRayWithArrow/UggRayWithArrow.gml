@@ -21,7 +21,6 @@ function UggRayWithArrow(_x1, _y1, _z1, _dX, _dY, _dZ, _color = UGG_DEFAULT_DIFF
     static _worldMatrix      = matrix_build_identity();
     static _invViewMatrix    = matrix_build_identity();
     static _vector           = [0, 0, 0, 1];
-    static _vectorMatrix     = matrix_build_identity();
     
     var _x2 = _x1 + UGG_RAY_LENGTH*_dX;
     var _y2 = _y1 + UGG_RAY_LENGTH*_dY;

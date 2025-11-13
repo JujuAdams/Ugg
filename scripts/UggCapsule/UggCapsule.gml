@@ -14,13 +14,15 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
 {
     __UGG_GLOBAL
     __UGG_COLOR_UNIFORMS
-    static _volumeCap     = _global.__volumeCapsuleCap;
-    static _volumeBody    = _global.__volumeCapsuleBody;
-    static _wireframeCap  = _global.__wireframeCapsuleCap;
-    static _wireframeBody = _global.__wireframeCapsuleBody;
-    static _nativeCap     = _global.__nativeCapsuleCap;
-    static _nativeBody    = _global.__nativeCapsuleBody;
-    static _staticMatrix  = matrix_build_identity();
+    static _volumeCap      = _global.__volumeCapsuleCap;
+    static _volumeBody     = _global.__volumeCapsuleBody;
+    static _wireframeCap   = _global.__wireframeCapsuleCap;
+    static _wireframeBody  = _global.__wireframeCapsuleBody;
+    static _nativeCap      = _global.__nativeCapsuleCap;
+    static _nativeBody     = _global.__nativeCapsuleBody;
+    static _oldWorldMatrix = matrix_build_identity();
+    static _staticMatrix   = matrix_build_identity();
+    static _newWorldMatrix = matrix_build_identity();
     
     _radius = min(_height/2, _radius);
     
@@ -57,10 +59,11 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     _staticMatrix[@ 13] = _y;
     _staticMatrix[@ 14] = _z + _height;
     
-    matrix_stack_push(_staticMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_get(matrix_world, _oldWorldMatrix);
+    matrix_multiply(_staticMatrix, _oldWorldMatrix, _newWorldMatrix);
+    matrix_set(matrix_world, _newWorldMatrix);
+    
     vertex_submit(_cap, _primitive, -1);
-    matrix_stack_pop();
     
     _staticMatrix[@  0] =  _radius;
     _staticMatrix[@  5] = -_radius;
@@ -69,10 +72,10 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     _staticMatrix[@ 13] = _y;
     _staticMatrix[@ 14] = _z;
     
-    matrix_stack_push(_staticMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_multiply(_staticMatrix, _oldWorldMatrix, _newWorldMatrix);
+    matrix_set(matrix_world, _newWorldMatrix);
+    
     vertex_submit(_cap, _primitive, -1);
-    matrix_stack_pop();
     
     _staticMatrix[@  0] = _radius;
     _staticMatrix[@  5] = _radius;
@@ -81,12 +84,12 @@ function UggCapsule(_x, _y, _z, _height, _radius, _color = UGG_DEFAULT_DIFFUSE_C
     _staticMatrix[@ 13] = _y;
     _staticMatrix[@ 14] = _z + _height/2;
     
-    matrix_stack_push(_staticMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
-    vertex_submit(_body, _primitive, -1);
-    matrix_stack_pop();
+    matrix_multiply(_staticMatrix, _oldWorldMatrix, _newWorldMatrix);
+    matrix_set(matrix_world, _newWorldMatrix);
     
-    matrix_set(matrix_world, matrix_stack_top());
+    vertex_submit(_body, _primitive, -1);
     
     __UGG_RESET_SHADER
+    
+    matrix_set(matrix_world, _oldWorldMatrix);
 }

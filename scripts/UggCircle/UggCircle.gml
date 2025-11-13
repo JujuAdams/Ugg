@@ -20,7 +20,9 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
     static _volumeCircle    = _global.__volumeCircle;
     static _wireframeCircle = _global.__wireframeCircle;
     static _nativeCircle    = _global.__nativeCircle;
+    static _oldWorldMatrix  = matrix_build_identity();
     static _staticMatrix    = matrix_build_identity();
+    static _newWorldMatrix  = matrix_build_identity();
     
     var _length = sqrt(_normalX*_normalX + _normalY*_normalY + _normalZ*_normalZ);
     if (_length == 0) return false;
@@ -68,8 +70,9 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
     _staticMatrix[@ 13] = _y;
     _staticMatrix[@ 14] = _z;
     
-    matrix_stack_push(_staticMatrix);
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_get(matrix_world, _oldWorldMatrix);
+    matrix_multiply(_staticMatrix, _oldWorldMatrix, _newWorldMatrix);
+    matrix_set(matrix_world, _newWorldMatrix);
     
     if (_wireframe ?? __UGG_WIREFRAME)
     {
@@ -89,6 +92,5 @@ function UggCircle(_x, _y, _z, _radius, _normalX, _normalY, _normalZ, _color = U
     
     __UGG_RESET_SHADER
     
-    matrix_stack_pop();
-    matrix_set(matrix_world, matrix_stack_top());
+    matrix_set(matrix_world, _oldWorldMatrix);
 }
